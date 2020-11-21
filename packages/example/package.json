@@ -3,14 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "ts-node src/index.ts",
-    "lint": "yarn lint:prettier --check && yarn lint:eslint",
-    "lint:fix": "yarn lint:prettier --write && yarn lint:eslint --fix",
-    "lint:prettier": "prettier './src/**/*.ts'",
-    "lint:eslint": "eslint './src/**/*.ts'"
+    "build": "zedocs build"
   },
   "dependencies": {
     "zedocs": "*"
-  },
-  "devDependencies": {}
+  }
 }
