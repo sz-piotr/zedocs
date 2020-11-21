@@ -1,7 +1,21 @@
 {
   "name": "zedocs",
-  "version": "0.1.0",
+  "version": "0.0.1",
+  "author": "Piotr Szlachciak <szlachciak.piotr@gmail.com>",
+  "description": "Great documentation for everyone",
   "license": "MIT",
+  "keywords": [
+    "documentation",
+    "markdown",
+    "cli"
+  ],
+  "homepage": "https://github.com/sz-piotr/zedocs",
+  "bugs": {
+    "url": "https://github.com/sz-piotr/zedocs/issues"
+  },
+  "files": [
+    "dist/src"
+  ],
   "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
   "scripts": {
@@ -11,7 +25,8 @@
     "lint:eslint": "eslint './{src,test}/**/*.ts'",
     "prebuild": "rimraf dist",
     "build": "tsc",
-    "test": "mocha"
+    "test": "mocha",
+    "prepublishOnly": "yarn build"
   },
   "dependencies": {},
   "devDependencies": {
