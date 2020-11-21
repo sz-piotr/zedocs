@@ -1,0 +1,12 @@
+{
+  "name": "ZeDocs",
+  "contents": [
+    {
+      "section": "Introduction",
+      "items": [
+        "src/getting-started.md",
+        "src/installation.md"
+      ]
+    }
+  ]
+}

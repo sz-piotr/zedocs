@@ -1,0 +1,5 @@
+# Installation
+
+```
+yarn add zedocs
+```
