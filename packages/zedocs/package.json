@@ -33,12 +33,15 @@
     "@types/fs-extra": "^9.0.4",
     "@types/markdown-it": "^10.0.3",
     "@types/markdown-it-container": "^2.0.3",
+    "@types/minimist": "^1.2.1",
+    "chalk": "^4.1.0",
     "change-case": "^4.1.1",
     "cheerio": "^1.0.0-rc.3",
     "fs-extra": "^9.0.1",
     "markdown-it": "^12.0.2",
     "markdown-it-container": "^3.0.0",
     "markdown-it-front-matter": "^0.2.3",
+    "minimist": "^1.2.5",
     "yaml": "^1.10.0"
   },
   "devDependencies": {

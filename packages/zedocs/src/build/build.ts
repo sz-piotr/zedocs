@@ -1,9 +1,10 @@
 import path from 'path'
 import fsx from 'fs-extra'
-import { Config, Section } from '../config/config'
+import { loadConfig, Section } from '../config/config'
 import { processMarkdown, RenderedMarkdown } from './markdown'
 
-export function build(config: Config) {
+export function build(configPath: string | undefined) {
+  const config = loadConfig(configPath)
   const files = getFiles(config.directory, config.contents)
   const compiled = files.map((file) => {
     const content = fsx.readFileSync(file, 'utf-8')
