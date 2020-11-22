@@ -1,9 +1,12 @@
-import { resolve, dirname } from 'path'
+import path from 'path'
+import fsx from 'fs-extra'
+import { exitWithError } from '../errors'
+import { parseConfig } from './parse'
 
 export interface Config {
   name: string
-  directory: string
   contents: (Section | string)[]
+  directory: string
 }
 
 export interface Section {
@@ -11,10 +14,14 @@ export interface Section {
   items: (Section | string)[]
 }
 
-export function loadConfig(path: string | undefined): Config {
-  const resolved = resolve(path || 'zedocs.json')
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const config = require(resolved)
-  config.directory = dirname(resolved)
-  return config
+export function loadConfig(filename: string | undefined): Config {
+  const resolved = path.resolve(filename || 'zedocs.json')
+  const directory = path.dirname(resolved)
+  try {
+    const json = fsx.readJSONSync(resolved)
+    const parsed = parseConfig(json)
+    return { ...parsed, directory }
+  } catch (e) {
+    exitWithError(e)
+  }
 }

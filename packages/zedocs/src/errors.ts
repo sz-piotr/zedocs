@@ -5,7 +5,7 @@ export function exitWithError(error: Error | string): never {
   process.exit(1)
 }
 
-export function printError (error: Error | string) {
+export function printError(error: Error | string) {
   const message = typeof error === 'string' ? error : error.message
-  console.error(chalk.red('error:'), message)
+  console.error(chalk.red(`error: ${message}`))
 }

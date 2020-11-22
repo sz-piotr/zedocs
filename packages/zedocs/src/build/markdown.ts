@@ -21,7 +21,10 @@ export interface RenderedLink {
 
 const HTTP_REGEX = /^https?:\/\//
 
-export function processMarkdown(content: string, file: string): RenderedMarkdown {
+export function processMarkdown(
+  content: string,
+  file: string
+): RenderedMarkdown {
   const directory = path.dirname(file)
 
   let frontMatter: any = {}
@@ -35,7 +38,9 @@ export function processMarkdown(content: string, file: string): RenderedMarkdown
     .render(content)
   const $ = cheerio.load(html)
   const slug = frontMatter.slug ?? path.parse(file).name
-  const name = frontMatter.name ?? ($('h1').eq(0).text() || sentenceCase(path.parse(slug).name))
+  const name =
+    frontMatter.name ??
+    ($('h1').eq(0).text() || sentenceCase(path.parse(slug).name))
 
   const links = extractLinks($, directory)
 

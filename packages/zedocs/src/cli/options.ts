@@ -36,7 +36,9 @@ export function parseCliOptions(args: string[]): CliOptions {
   const version = get(parsed, 'v', 'version')
   if (version !== undefined) {
     if (typeof version !== 'boolean') {
-      throw new Error('The version argument does not take a value. See "zedocs --help".')
+      throw new Error(
+        'The version argument does not take a value. See "zedocs --help".'
+      )
     }
     options.version = version
   }
@@ -44,7 +46,9 @@ export function parseCliOptions(args: string[]): CliOptions {
   const config = get(parsed, 'c', 'config')
   if (config !== undefined) {
     if (typeof config !== 'string') {
-      throw new Error('Invalid config value passed as argument. See "zedocs --help".')
+      throw new Error(
+        'Invalid config value passed as argument. See "zedocs --help".'
+      )
     }
     options.config = config
   }
@@ -52,7 +56,11 @@ export function parseCliOptions(args: string[]): CliOptions {
   return options
 }
 
-function get(parsed: minimist.ParsedArgs, short: string, full: string): unknown {
+function get(
+  parsed: minimist.ParsedArgs,
+  short: string,
+  full: string
+): unknown {
   if (parsed[short] && parsed[full]) {
     throw new Error(`Both -${short} and --${full} specified.`)
   }
@@ -63,7 +71,9 @@ function checkAllowed(parsed: minimist.ParsedArgs) {
   const options = Object.keys(parsed).filter((x) => x !== '_')
   for (const option of options) {
     if (!ALLOWED_OPTIONS.includes(option)) {
-      throw new Error(`Invalid option specified: ${option}. See "zedocs --help".`)
+      throw new Error(
+        `Invalid option specified: ${option}. See "zedocs --help".`
+      )
     }
   }
 }
