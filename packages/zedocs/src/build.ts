@@ -12,9 +12,8 @@ export function build(config: Config) {
   const dist = path.join(config.directory, 'dist')
   fsx.removeSync(dist)
   for (const item of compiled) {
-    console.log(item)
     const location = path.join(dist, item.slug, 'index.html')
-    fsx.outputFileSync(location, item.html)
+    fsx.outputFileSync(location, item.html.html())
   }
 }
 
