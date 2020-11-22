@@ -1,11 +1,9 @@
 import { usage, version } from './usage'
-import { loadConfig } from './config'
-import { build } from './build'
-import { serve } from './serve'
+import { loadConfig } from '../config/config'
+import { build } from '../build/build'
+import { serve } from '../serve'
 
-run(process.argv.slice(2))
-
-function run(args: string[]) {
+export function run(args: string[]) {
   if (args.length === 0 || args.includes('-h') || args.includes('--help')) {
     console.log(usage)
   } else {
