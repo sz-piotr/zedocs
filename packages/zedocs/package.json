@@ -21,20 +21,25 @@
   "types": "./dist/src/index.d.ts",
   "bin": "./bin.js",
   "scripts": {
-    "lint": "yarn lint:prettier --check && yarn lint:eslint",
-    "lint:fix": "yarn lint:prettier --write && yarn lint:eslint --fix",
-    "lint:prettier": "prettier './{src,test}/**/*.ts'",
-    "lint:eslint": "eslint './{src,test}/**/*.ts'",
+    "lint": "prettier src test --check && eslint src test",
+    "lint:fix": "prettier src test --write && eslint src test --fix",
     "prebuild": "rimraf dist",
     "build": "tsc",
     "test": "mocha",
     "prepublishOnly": "yarn build"
   },
   "dependencies": {
+    "@types/cheerio": "^0.22.22",
+    "@types/fs-extra": "^9.0.4",
     "@types/markdown-it": "^10.0.3",
     "@types/markdown-it-container": "^2.0.3",
+    "change-case": "^4.1.1",
+    "cheerio": "^1.0.0-rc.3",
+    "fs-extra": "^9.0.1",
     "markdown-it": "^12.0.2",
-    "markdown-it-container": "^3.0.0"
+    "markdown-it-container": "^3.0.0",
+    "markdown-it-front-matter": "^0.2.3",
+    "yaml": "^1.10.0"
   },
   "devDependencies": {
     "@types/mocha": "^8.0.4",

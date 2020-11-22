@@ -7,6 +7,12 @@
         "src/getting-started.md",
         "src/installation.md"
       ]
+    },
+    {
+      "section": "Guide",
+      "items": [
+        "src/guide/how-to.md"
+      ]
     }
   ]
 }

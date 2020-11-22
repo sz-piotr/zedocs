@@ -1,8 +1,7 @@
 import { expect } from 'earljs'
-import { add } from '../src'
 
-describe('add', () => {
+describe('+', () => {
   it('adds two numbers', () => {
-    expect(add(1, 2)).toEqual(3)
+    expect(1 + 2).toEqual(3)
   })
 })
