@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "zedocs build"
+    "build": "zedocs build",
+    "lint": "prettier src --check",
+    "lint:fix": "prettier src --write"
   },
   "dependencies": {
     "zedocs": "*"
