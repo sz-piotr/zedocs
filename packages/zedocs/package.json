@@ -14,7 +14,7 @@
     "url": "https://github.com/sz-piotr/zedocs/issues"
   },
   "files": [
-    "dist/src",
+    "dist",
     "bin.js"
   ],
   "main": "./dist/src/index.js",
@@ -24,7 +24,7 @@
     "lint": "prettier src test --check && eslint src test",
     "lint:fix": "prettier src test --write && eslint src test --fix",
     "prebuild": "rimraf dist",
-    "build": "tsc",
+    "build": "tsc -p tsconfig.build.json",
     "test": "mocha",
     "prepublishOnly": "yarn build"
   },

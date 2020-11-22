@@ -3,5 +3,5 @@ module.exports = {
   extension: 'ts',
   watchExtensions: 'ts',
   spec: './test/**/*.test.ts',
-  require: 'ts-node/register/transpile-only',
+  require: 'ts-node/register',
 }
