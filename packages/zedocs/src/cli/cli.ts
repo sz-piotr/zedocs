@@ -1,14 +1,14 @@
-import chalk from 'chalk'
+import { build } from '../build/build'
+import { exitWithError } from '../errors'
 import { CliOptions, parseCliOptions } from './options'
 import { usage, version } from './usage'
-import { build } from '../build/build'
 
 export function run(args: string[]) {
   let options: CliOptions
   try {
     options = parseCliOptions(args)
   } catch (e) {
-    exitWithError(e.message)
+    exitWithError(e)
   }
   if (options.help) {
     console.log(usage)
@@ -21,9 +21,4 @@ export function run(args: string[]) {
   } else {
     exitWithError('No command specified. See "zedocs --help".')
   }
-}
-
-function exitWithError(message: string): never {
-  console.error(chalk.red(`zedocs: ${message}`))
-  process.exit(1)
 }
