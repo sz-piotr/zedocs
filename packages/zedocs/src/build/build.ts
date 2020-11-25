@@ -1,12 +1,13 @@
 import path from 'path'
 import fsx from 'fs-extra'
-import { loadConfig, Section } from '../config'
+import { loadConfig } from '../config'
 import { processMarkdown, RenderedMarkdown } from './processMarkdown'
+import { processContents } from './processContents'
 
 export function build(configPath: string | undefined) {
   const config = loadConfig(configPath)
-  const files = getFiles(config.directory, config.contents)
-  const compiled = files.map((file) => {
+  const contents = processContents(config.directory, config.contents)
+  const compiled = contents.assets.map((file) => {
     const content = fsx.readFileSync(file, 'utf-8')
     return processMarkdown(content, file)
   })
@@ -17,18 +18,6 @@ export function build(configPath: string | undefined) {
     const location = path.join(dist, item.slug, 'index.html')
     fsx.outputFileSync(location, item.html.html())
   }
-}
-
-function getFiles(directory: string, items: (Section | string)[]) {
-  const files: string[] = []
-  for (const item of items) {
-    if (typeof item === 'string') {
-      files.push(path.resolve(directory, item))
-    } else {
-      files.push(...getFiles(directory, item.items))
-    }
-  }
-  return files
 }
 
 function resolveLinks(compiled: RenderedMarkdown[], directory: string) {
