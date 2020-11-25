@@ -1,6 +1,6 @@
 import path from 'path'
 import fsx from 'fs-extra'
-import { loadConfig, Section } from '../config/config'
+import { loadConfig, Section } from '../config'
 import { processMarkdown, RenderedMarkdown } from './processMarkdown'
 
 export function build(configPath: string | undefined) {
