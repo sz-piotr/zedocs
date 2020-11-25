@@ -22,6 +22,10 @@ export function loadConfig(filename: string | undefined): Config {
     const parsed = parseConfig(json)
     return { ...parsed, directory }
   } catch (e) {
-    exitWithError(e)
+    if (e.message.includes('ENOENT')) {
+      exitWithError(resolved, 'Config file not found.')
+    } else {
+      exitWithError(resolved, e)
+    }
   }
 }
