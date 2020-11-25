@@ -18,14 +18,11 @@ export function loadConfig(filename: string | undefined): Config {
   const resolved = path.resolve(filename || 'zedocs.json')
   const directory = path.dirname(resolved)
   try {
-    const json = fsx.readJSONSync(resolved)
+    const content = fsx.readFileSync(resolved, 'utf-8')
+    const json = JSON.parse(content)
     const parsed = parseConfig(json)
     return { ...parsed, directory }
   } catch (e) {
-    if (e.message.includes('ENOENT')) {
-      exitWithError(resolved, 'Config file not found.')
-    } else {
-      exitWithError(resolved, e)
-    }
+    exitWithError(resolved, e)
   }
 }
