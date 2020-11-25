@@ -1,7 +1,7 @@
 import path from 'path'
 import fsx from 'fs-extra'
 import { loadConfig, Section } from '../config/config'
-import { processMarkdown, RenderedMarkdown } from './markdown'
+import { processMarkdown, RenderedMarkdown } from './processMarkdown'
 
 export function build(configPath: string | undefined) {
   const config = loadConfig(configPath)
@@ -23,7 +23,7 @@ function getFiles(directory: string, items: (Section | string)[]) {
   const files: string[] = []
   for (const item of items) {
     if (typeof item === 'string') {
-      files.push(path.join(directory, item))
+      files.push(path.resolve(directory, item))
     } else {
       files.push(...getFiles(directory, item.items))
     }

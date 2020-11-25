@@ -1,4 +1,5 @@
 import * as z from 'zod'
+import { zodErrorToString } from '../errors'
 import { Section } from './config'
 
 const sectionSchema: z.ZodSchema<Section> = z
@@ -20,30 +21,11 @@ export function parseConfig(config: unknown) {
   if (result.success) {
     return result.data
   } else {
-    throw new Error(issuesToMessage(result.error.issues))
+    const message = zodErrorToString(
+      'Configuration error',
+      'config',
+      result.error
+    )
+    throw new Error(message)
   }
-}
-
-function issuesToMessage(issues: z.ZodIssue[]) {
-  let message = 'Configuration error. The following issues were found:'
-  for (const issue of issues) {
-    message += `\n  at ${makePath(issue.path)}: ${issue.message}`
-  }
-  return message
-}
-
-const IDENTIFIER_REGEX = /^[_$a-zA-Z][$\w]*$/
-
-function makePath(path: (string | number)[]) {
-  let result = 'config'
-  for (const item of path) {
-    if (typeof item === 'number') {
-      result += `[${item}]`
-    } else if (IDENTIFIER_REGEX.test(item)) {
-      result += `.${item}`
-    } else {
-      result += `[${JSON.stringify(item)}]`
-    }
-  }
-  return result
 }
