@@ -1,34 +1,24 @@
-import { usage, version } from './usage'
-import { loadConfig } from '../config/config'
 import { build } from '../build/build'
-import { serve } from '../serve'
+import { exitWithError } from '../errors'
+import { CliOptions, parseCliOptions } from './options'
+import { usage, version } from './usage'
 
 export function run(args: string[]) {
-  if (args.length === 0 || args.includes('-h') || args.includes('--help')) {
-    console.log(usage)
-  } else {
-    const [command, ...rest] = args
-    if (command === '-v' || command === '--version') {
-      console.log(version)
-    } else if (command === 'build') {
-      if (rest.length > 1) {
-        runError(`Too many options`)
-      }
-      build(loadConfig(rest[0]))
-    } else if (command === 'serve') {
-      if (rest.length > 1) {
-        runError(`Too many options`)
-      }
-      serve()
-    } else if (command.startsWith('-')) {
-      runError(`Unknown option ${command}`)
-    } else {
-      runError(`Unknown command ${command}`)
-    }
+  let options: CliOptions
+  try {
+    options = parseCliOptions(args)
+  } catch (e) {
+    exitWithError(e)
   }
-}
-
-function runError(message: string) {
-  console.error(`Error: ${message}`)
-  process.exit(1)
+  if (options.help) {
+    console.log(usage)
+  } else if (options.version) {
+    console.log(version)
+  } else if (options.command === 'build') {
+    return build(options.config)
+  } else if (options.command === 'serve') {
+    exitWithError('The serve command is not yet supported.')
+  } else {
+    exitWithError('No command specified. See "zedocs --help".')
+  }
 }
