@@ -10,7 +10,7 @@ export interface ProcessedMarkdown {
   name: string
   html: cheerio.Cheerio
   links: RenderedLink[]
-  warnings: string[]
+  warning?: string
 }
 
 export function processMarkdown(
@@ -19,7 +19,6 @@ export function processMarkdown(
 ): ProcessedMarkdown {
   const directory = path.dirname(asset)
   const { html, frontMatter, error } = parseMarkdown(data)
-  const warnings = error ? [error] : []
 
   const $ = cheerio.load(html)
   const slug = frontMatter.slug ?? path.parse(asset).name
@@ -34,6 +33,6 @@ export function processMarkdown(
     name,
     html: $('body'),
     links,
-    warnings,
+    warning: error,
   }
 }

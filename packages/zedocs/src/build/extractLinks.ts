@@ -1,7 +1,7 @@
 import path from 'path'
 
 export interface RenderedLink {
-  path: string
+  asset: string
   update: (path: string) => void
 }
 
@@ -13,16 +13,16 @@ export function extractLinks($: cheerio.Root, directory: string) {
     const $el = $(el)
     const src = $el.attr('src')
     if (src && !HTTP_REGEX.test(src)) {
-      const absolute = path.join(directory, src)
-      links.push({ path: absolute, update: (path) => $el.attr('src', path) })
+      const asset = path.resolve(directory, src)
+      links.push({ asset, update: (path) => $el.attr('src', path) })
     }
   })
   $('a').each((i, el) => {
     const $el = $(el)
     const src = $el.attr('href')
     if (src && !HTTP_REGEX.test(src)) {
-      const absolute = path.join(directory, src)
-      links.push({ path: absolute, update: (path) => $el.attr('href', path) })
+      const asset = path.resolve(directory, src)
+      links.push({ asset, update: (path) => $el.attr('href', path) })
     }
   })
   return links
