@@ -8,7 +8,7 @@ export function run(args: string[]) {
   try {
     options = parseCliOptions(args)
   } catch (e) {
-    exitWithError(e)
+    exitWithError('zedocs', e)
   }
   if (options.help) {
     console.log(usage)
@@ -17,8 +17,8 @@ export function run(args: string[]) {
   } else if (options.command === 'build') {
     return build(options.config)
   } else if (options.command === 'serve') {
-    exitWithError('The serve command is not yet supported.')
+    exitWithError('zedocs', 'The serve command is not yet supported.')
   } else {
-    exitWithError('No command specified. See "zedocs --help".')
+    exitWithError('zedocs', 'No command specified. See "zedocs --help".')
   }
 }
