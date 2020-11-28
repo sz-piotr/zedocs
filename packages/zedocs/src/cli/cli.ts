@@ -1,4 +1,4 @@
-import { build } from '../build/build'
+import { build } from '../build'
 import { exitWithError } from '../errors'
 import { CliOptions, parseCliOptions } from './options'
 import { usage, version } from './usage'

@@ -1,6 +1,6 @@
 import * as z from 'zod'
-import { zodErrorToString } from '../errors'
-import { Section } from './config'
+import { zodErrorToString } from '../../errors'
+import { Section } from './Config'
 
 const sectionSchema: z.ZodSchema<Section> = z
   .object({
