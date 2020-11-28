@@ -1,3 +1,4 @@
+import path from 'path'
 import { BuildError, BuildWarning } from '../../errors'
 import { Artifacts } from '../Artifacts'
 import { BuildQueue, DocumentQueueItem } from '../BuildQueue'
@@ -30,6 +31,7 @@ export function processDocument(
     }
     artifacts.documents.push({
       sourcePath: item.path,
+      targetPath: path.join(processed.slug, 'index.html'),
       name: processed.name,
       slug: processed.slug,
       content: processed.content,

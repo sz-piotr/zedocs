@@ -20,7 +20,7 @@ export function processMarkdown(
   const { html, frontMatter, warning } = parseMarkdown(data)
 
   const $ = cheerio.load(html)
-  const slug = frontMatter.slug ?? path.parse(asset).name
+  const slug = normalizeSlug(frontMatter.slug ?? path.parse(asset).name)
   const name =
     frontMatter.name ??
     ($('h1').eq(0).text() || sentenceCase(path.parse(slug).name))
@@ -33,4 +33,8 @@ export function processMarkdown(
     links,
     warning,
   }
+}
+
+function normalizeSlug(slug: string) {
+  return path.posix.resolve('/', slug)
 }
