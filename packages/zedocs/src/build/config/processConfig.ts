@@ -1,7 +1,7 @@
 import path from 'path'
 import { BuildError, BuildWarning } from '../../errors'
 import { Artifacts } from '../Artifacts'
-import { BuildQueue, ConfigQueueItem } from '../BuildQueue'
+import { BuildQueue, ConfigQueueItem } from '../firstPass'
 import { Config } from './Config'
 import { loadConfig } from './loadConfig'
 

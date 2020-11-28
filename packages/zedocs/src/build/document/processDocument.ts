@@ -1,7 +1,7 @@
 import path from 'path'
 import { BuildError, BuildWarning } from '../../errors'
 import { Artifacts } from '../Artifacts'
-import { BuildQueue, DocumentQueueItem } from '../BuildQueue'
+import { BuildQueue, DocumentQueueItem } from '../firstPass'
 import { readFileToString } from '../files'
 import { processMarkdown } from './processMarkdown'
 

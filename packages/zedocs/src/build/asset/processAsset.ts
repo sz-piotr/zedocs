@@ -1,6 +1,6 @@
 import { BuildError, BuildWarning } from '../../errors'
 import { Artifacts } from '../Artifacts'
-import { AssetQueueItem } from '../BuildQueue'
+import { AssetQueueItem } from '../firstPass'
 import { readFileToBuffer } from '../files'
 import { findAvailableTarget } from './findAvailableTarget'
 
