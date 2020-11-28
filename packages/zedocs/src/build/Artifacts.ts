@@ -2,6 +2,7 @@ import { Config } from './config'
 
 export interface Document {
   sourcePath: string
+  targetPath: string
   slug: string
   name: string
   content: string

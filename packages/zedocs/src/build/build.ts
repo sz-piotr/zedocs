@@ -1,4 +1,4 @@
-import { buildFirstPass } from './buildFirstPass'
+import { buildFirstPass } from './firstPass'
 import { output } from './output'
 
 export function build(configPath: string | undefined) {

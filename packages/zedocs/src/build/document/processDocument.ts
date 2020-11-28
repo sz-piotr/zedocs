@@ -1,6 +1,7 @@
+import path from 'path'
 import { BuildError, BuildWarning } from '../../errors'
 import { Artifacts } from '../Artifacts'
-import { BuildQueue, DocumentQueueItem } from '../BuildQueue'
+import { BuildQueue, DocumentQueueItem } from '../firstPass'
 import { readFileToString } from '../files'
 import { processMarkdown } from './processMarkdown'
 
@@ -30,13 +31,14 @@ export function processDocument(
     }
     artifacts.documents.push({
       sourcePath: item.path,
+      targetPath: path.join(processed.slug, 'index.html'),
       name: processed.name,
       slug: processed.slug,
       content: processed.content,
     })
     for (const link of processed.links) {
       queue.add({
-        type: 'ASSET',
+        type: link.endsWith('.md') ? 'DOCUMENT' : 'ASSET',
         path: link,
         referencedBy: item.path,
       })
