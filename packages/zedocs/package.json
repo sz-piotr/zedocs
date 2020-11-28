@@ -21,8 +21,8 @@
   "types": "./dist/src/index.d.ts",
   "bin": "./bin.js",
   "scripts": {
-    "lint": "prettier src test --check && eslint src test",
-    "lint:fix": "prettier src test --write && eslint src test --fix",
+    "lint": "prettier src test assets --check && eslint src test assets",
+    "lint:fix": "prettier src test assets --write && eslint src test assets --fix",
     "prebuild": "rimraf dist",
     "build": "tsc -p tsconfig.build.json",
     "test": "mocha",

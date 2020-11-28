@@ -12,6 +12,7 @@ export function Body({ toc, content }: Props) {
         <code>{JSON.stringify(toc, null, 2)}</code>
       </pre>
       <div dangerouslySetInnerHTML={{ __html: content }} />
+      <script type="module" src="/static/zedocs.js" />
     </body>
   )
 }
