@@ -1,4 +1,5 @@
 import MarkdownIt from 'markdown-it'
+import MarkdownItAnchor from 'markdown-it-anchor'
 import MarkdownItContainer from 'markdown-it-container'
 import MarkdownItFrontMatter from 'markdown-it-front-matter'
 import { FrontMatter, parseFrontMatter } from './frontMatter'
@@ -13,6 +14,7 @@ export function parseMarkdown(content: string): MarkdownParseResult {
   let frontMatter: FrontMatter = {}
   let warning: string | undefined
   const html = new MarkdownIt()
+    .use(MarkdownItAnchor)
     .use(MarkdownItContainer, 'info')
     .use(MarkdownItContainer, 'note')
     .use(MarkdownItContainer, 'warning')
