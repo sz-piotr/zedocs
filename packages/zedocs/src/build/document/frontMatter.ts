@@ -1,6 +1,6 @@
 import YAML from 'yaml'
 import * as z from 'zod'
-import { zodErrorToString } from '../errors'
+import { zodErrorToString } from '../../errors'
 
 export interface FrontMatter {
   name?: string
