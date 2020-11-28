@@ -1,4 +1,5 @@
 import path from 'path'
+import { BuildError, BuildWarning } from '../../errors'
 import { Artifacts } from '../Artifacts'
 import { BuildQueue, ConfigQueueItem } from '../BuildQueue'
 import { Config } from './Config'
@@ -9,9 +10,26 @@ export function processConfig(
   queue: BuildQueue,
   artifacts: Artifacts
 ) {
-  const config = loadConfig(item.path)
-  artifacts.config = config
-  addDocuments(item.path, config.directory, config.contents, queue)
+  const errors: BuildError[] = []
+  const warnings: BuildWarning[] = []
+
+  const result = loadConfig(item.path)
+  if (!result.success) {
+    errors.push({
+      path: item.path,
+      message: result.error,
+    })
+  } else {
+    artifacts.config = result.data
+    addDocuments(
+      item.path,
+      artifacts.config.directory,
+      artifacts.config.contents,
+      queue
+    )
+  }
+
+  return { errors, warnings }
 }
 
 export function addDocuments(

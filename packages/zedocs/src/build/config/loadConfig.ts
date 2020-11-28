@@ -1,17 +1,21 @@
-import path from 'path'
 import fsx from 'fs-extra'
-import { exitWithError } from '../../errors'
-import { parseConfig } from './parse'
+import path from 'path'
+import { errorToString } from '../../errors'
 import { Config } from './Config'
+import { parseConfig } from './parse'
 
-export function loadConfig(filename: string): Config {
+type LoadConfigResult =
+  | { success: true; data: Config }
+  | { success: false; error: string }
+
+export function loadConfig(filename: string): LoadConfigResult {
   const directory = path.dirname(filename)
   try {
     const content = fsx.readFileSync(filename, 'utf-8')
     const json = JSON.parse(content)
     const parsed = parseConfig(json)
-    return { ...parsed, directory }
+    return { success: true, data: { ...parsed, directory } }
   } catch (e) {
-    exitWithError(filename, e)
+    return { success: false, error: errorToString(e) }
   }
 }

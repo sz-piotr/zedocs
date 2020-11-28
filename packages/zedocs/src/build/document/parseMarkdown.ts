@@ -6,12 +6,12 @@ import { FrontMatter, parseFrontMatter } from './frontMatter'
 interface MarkdownParseResult {
   html: string
   frontMatter: FrontMatter
-  error: string | undefined
+  warning: string | undefined
 }
 
 export function parseMarkdown(content: string): MarkdownParseResult {
   let frontMatter: FrontMatter = {}
-  let error: string | undefined
+  let warning: string | undefined
   const html = new MarkdownIt()
     .use(MarkdownItContainer, 'info')
     .use(MarkdownItContainer, 'note')
@@ -19,8 +19,8 @@ export function parseMarkdown(content: string): MarkdownParseResult {
     .use(MarkdownItFrontMatter, (fm: string) => {
       const result = parseFrontMatter(fm)
       frontMatter = result.frontMatter
-      error = result.error
+      warning = result.error
     })
     .render(content)
-  return { html, frontMatter, error }
+  return { html, frontMatter, warning }
 }
