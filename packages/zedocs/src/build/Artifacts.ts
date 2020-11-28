@@ -11,7 +11,7 @@ export interface Document {
 export interface Output {
   sourcePath: string
   targetPath: string
-  content: Buffer
+  content: Buffer | string
 }
 
 export class Artifacts {
