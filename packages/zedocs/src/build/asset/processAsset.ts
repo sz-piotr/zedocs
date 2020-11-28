@@ -1,22 +1,27 @@
-import fsx from 'fs-extra'
+import { BuildError, BuildWarning } from '../../errors'
 import { Artifacts } from '../Artifacts'
 import { AssetQueueItem } from '../BuildQueue'
-import { exitWithError } from '../../errors'
+import { readFileToBuffer } from '../files'
 import { findAvailableTarget } from './findAvailableTarget'
 
 export function processAsset(item: AssetQueueItem, artifacts: Artifacts) {
-  const content = readFile(item.path)
-  artifacts.outputs.push({
-    sourcePath: item.path,
-    targetPath: findAvailableTarget(item.path, artifacts),
-    content,
-  })
-}
+  const errors: BuildError[] = []
+  const warnings: BuildWarning[] = []
 
-function readFile(filename: string) {
-  try {
-    return fsx.readFileSync(filename)
-  } catch (e) {
-    exitWithError(filename, e)
+  const result = readFileToBuffer(item.path)
+  if (!result.success) {
+    errors.push({
+      path: item.path,
+      referencedBy: item.referencedBy,
+      message: result.error,
+    })
+  } else {
+    artifacts.outputs.push({
+      sourcePath: item.path,
+      targetPath: findAvailableTarget(item.path, artifacts),
+      content: result.data,
+    })
   }
+
+  return { errors, warnings }
 }

@@ -1,7 +1,6 @@
 import { sentenceCase } from 'change-case'
 import cheerio from 'cheerio'
 import path from 'path'
-import { printWarning } from '../../errors'
 import { extractLinks } from './extractLinks'
 import { parseMarkdown } from './parseMarkdown'
 
@@ -10,6 +9,7 @@ export interface ProcessedMarkdown {
   name: string
   content: string
   links: string[]
+  warning?: string
 }
 
 export function processMarkdown(
@@ -17,10 +17,7 @@ export function processMarkdown(
   data: string
 ): ProcessedMarkdown {
   const directory = path.dirname(asset)
-  const { html, frontMatter, error } = parseMarkdown(data)
-  if (error) {
-    printWarning(asset, error)
-  }
+  const { html, frontMatter, warning } = parseMarkdown(data)
 
   const $ = cheerio.load(html)
   const slug = frontMatter.slug ?? path.parse(asset).name
@@ -34,5 +31,6 @@ export function processMarkdown(
     name,
     content: html,
     links,
+    warning,
   }
 }

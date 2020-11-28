@@ -1,5 +1,5 @@
 import { expect } from 'earljs'
-import { parseCliOptions, CliOptions } from '../../src/cli/options'
+import { CliOptions, parseCliOptions } from '../../src/cli/options'
 
 describe('parseCliOptions', () => {
   const successCases: { args: string[]; result: CliOptions }[] = [
