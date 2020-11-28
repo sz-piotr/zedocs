@@ -1,4 +1,5 @@
 import { OutlineItem, TocItem } from '../secondPass'
+import { NavigationButtons } from './NavigationButtons'
 import { Outline } from './Outline'
 
 interface Props {
@@ -8,11 +9,12 @@ interface Props {
   toc: TocItem[]
 }
 
-export function Main({ content, outline }: Props) {
+export function Main({ content, outline, activeItem, toc }: Props) {
   return (
     <main>
       <Outline outline={outline} />
       <article dangerouslySetInnerHTML={{ __html: content }} />
+      <NavigationButtons activeItem={activeItem} toc={toc} />
     </main>
   )
 }
