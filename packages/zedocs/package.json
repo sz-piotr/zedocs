@@ -29,11 +29,6 @@
     "prepublishOnly": "yarn build"
   },
   "dependencies": {
-    "@types/cheerio": "^0.22.22",
-    "@types/fs-extra": "^9.0.4",
-    "@types/markdown-it": "^10.0.3",
-    "@types/markdown-it-container": "^2.0.3",
-    "@types/minimist": "^1.2.1",
     "chalk": "^4.1.0",
     "change-case": "^4.1.1",
     "cheerio": "^1.0.0-rc.3",
@@ -42,11 +37,20 @@
     "markdown-it-container": "^3.0.0",
     "markdown-it-front-matter": "^0.2.3",
     "minimist": "^1.2.5",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "yaml": "^1.10.0",
     "zod": "^2.0.0-beta.22"
   },
   "devDependencies": {
+    "@types/cheerio": "^0.22.22",
+    "@types/fs-extra": "^9.0.4",
+    "@types/markdown-it": "^10.0.3",
+    "@types/markdown-it-container": "^2.0.3",
+    "@types/minimist": "^1.2.1",
     "@types/mocha": "^8.0.4",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
     "earljs": "^0.1.2",
     "mocha": "^8.2.1",
     "ts-node": "^9.0.0",

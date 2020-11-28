@@ -1,21 +1,14 @@
 import cheerio from 'cheerio'
 import path from 'path'
 import { Document } from '../Artifacts'
-import { TocItem } from '../secondPass'
 
-export function renderDocument(
+export function prepareHtml(
   document: Document,
-  toc: TocItem[],
   linkMapping: Map<string, string>
 ) {
   const $ = cheerio.load(document.content)
   replaceLinks($, path.dirname(document.sourcePath), linkMapping)
-  const html = $('body').html()
-
-  return `
-    <pre><code>${JSON.stringify(toc, null, 2)}</code></pre>
-    ${html}
-  `
+  return $('body').html() ?? ''
 }
 
 const HTTP_REGEX = /^https?:\/\//
