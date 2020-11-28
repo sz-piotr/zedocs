@@ -14,7 +14,7 @@ export function Html({ title, link, outline, content, toc }: Props) {
   return (
     <html lang="en">
       <Head title={title} />
-      <Body link={link} outline={outline} toc={toc} content={content} />
+      <Body activeItem={link} outline={outline} toc={toc} content={content} />
     </html>
   )
 }
