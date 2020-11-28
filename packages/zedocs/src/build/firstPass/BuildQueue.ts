@@ -11,13 +11,13 @@ export interface ConfigQueueItem {
 export interface DocumentQueueItem {
   type: 'DOCUMENT'
   path: string
-  referencedBy: string
+  referencedBy?: string
 }
 
 export interface AssetQueueItem {
   type: 'ASSET'
   path: string
-  referencedBy: string
+  referencedBy?: string
 }
 
 export class BuildQueue {

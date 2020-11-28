@@ -1,1 +1,1 @@
-export * from './renderDocument'
+export * from './render'
