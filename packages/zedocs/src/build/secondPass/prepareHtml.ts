@@ -1,6 +1,8 @@
 import cheerio from 'cheerio'
 import path from 'path'
 import { Document } from '../Artifacts'
+import { getOutline } from './getOutline'
+import { replaceLinks } from './replaceLinks'
 
 export function prepareHtml(
   document: Document,
@@ -8,26 +10,7 @@ export function prepareHtml(
 ) {
   const $ = cheerio.load(document.content)
   replaceLinks($, path.dirname(document.sourcePath), linkMapping)
-  return $('body').html() ?? ''
-}
-
-const HTTP_REGEX = /^https?:\/\//
-
-function replaceLinks(
-  $: cheerio.Root,
-  directory: string,
-  linkMapping: Map<string, string>
-) {
-  $('a, img').each((i, el) => {
-    const $el = $(el)
-    const attr = $el.is('a') ? 'href' : 'src'
-    const href = $el.attr(attr)
-    if (href && !HTTP_REGEX.test(href)) {
-      const fullPath = path.resolve(directory, href)
-      const link = linkMapping.get(fullPath)
-      if (link) {
-        $el.attr(attr, link)
-      }
-    }
-  })
+  const outline = getOutline($)
+  const html = $('body').html() ?? ''
+  return { html, outline }
 }
