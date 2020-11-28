@@ -36,7 +36,7 @@ export function processDocument(
     })
     for (const link of processed.links) {
       queue.add({
-        type: 'ASSET',
+        type: link.endsWith('.md') ? 'DOCUMENT' : 'ASSET',
         path: link,
         referencedBy: item.path,
       })
