@@ -1,20 +1,19 @@
-import { OutlineItem, TocItem } from '../secondPass'
+import { TocItem } from '../secondPass'
 import { NavigationButtons } from './NavigationButtons'
 import { Outline } from './Outline'
+import { Document } from './types'
 
 interface Props {
-  content: string
-  activeItem: string
-  outline: OutlineItem[]
+  document: Document
   toc: TocItem[]
 }
 
-export function Main({ content, outline, activeItem, toc }: Props) {
+export function Main({ document, toc }: Props) {
   return (
     <main>
-      <Outline outline={outline} />
-      <article dangerouslySetInnerHTML={{ __html: content }} />
-      <NavigationButtons activeItem={activeItem} toc={toc} />
+      <Outline outline={document.outline} />
+      <article dangerouslySetInnerHTML={{ __html: document.html }} />
+      <NavigationButtons activeItem={document.link} toc={toc} />
     </main>
   )
 }

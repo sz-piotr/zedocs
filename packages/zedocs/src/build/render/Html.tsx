@@ -1,20 +1,19 @@
-import { OutlineItem, TocItem } from '../secondPass'
+import { TocItem } from '../secondPass'
 import { Body } from './Body'
 import { Head } from './Head'
+import { Document, Project } from './types'
 
 interface Props {
-  title: string
-  link: string
-  content: string
-  outline: OutlineItem[]
+  project: Project
+  document: Document
   toc: TocItem[]
 }
 
-export function Html({ title, link, outline, content, toc }: Props) {
+export function Html({ project, document, toc }: Props) {
   return (
     <html lang="en">
-      <Head title={title} />
-      <Body activeItem={link} outline={outline} toc={toc} content={content} />
+      <Head title={`${document.title} - ${project.name}`} />
+      <Body project={project} document={document} toc={toc} />
     </html>
   )
 }

@@ -1,24 +1,21 @@
-import { OutlineItem, TocItem } from '../secondPass'
+import { TocItem } from '../secondPass'
 import { Main } from './Main'
 import { TableOfContents } from './TableOfContents'
+import { TopBar } from './TopBar'
+import { Document, Project } from './types'
 
 interface Props {
-  activeItem: string
-  outline: OutlineItem[]
+  project: Project
+  document: Document
   toc: TocItem[]
-  content: string
 }
 
-export function Body({ activeItem, toc, outline, content }: Props) {
+export function Body({ project, document, toc }: Props) {
   return (
     <body>
-      <TableOfContents toc={toc} activeItem={activeItem} />
-      <Main
-        content={content}
-        toc={toc}
-        activeItem={activeItem}
-        outline={outline}
-      />
+      <TopBar project={project} />
+      <TableOfContents toc={toc} activeItem={document.link} />
+      <Main document={document} toc={toc} />
       <script type="module" src="/static/zedocs.js" />
     </body>
   )
