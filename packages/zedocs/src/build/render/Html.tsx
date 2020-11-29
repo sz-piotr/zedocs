@@ -10,9 +10,13 @@ interface Props {
 }
 
 export function Html({ project, document, toc }: Props) {
+  const title =
+    document.title !== project.name
+      ? `${document.title} - ${project.name}`
+      : document.title
   return (
     <html lang="en">
-      <Head title={`${document.title} - ${project.name}`} />
+      <Head title={title} />
       <Body project={project} document={document} toc={toc} />
     </html>
   )

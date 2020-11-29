@@ -12,7 +12,10 @@ export function Main({ document, toc }: Props) {
   return (
     <main>
       <Outline outline={document.outline} />
-      <article dangerouslySetInnerHTML={{ __html: document.html }} />
+      <article
+        className="article"
+        dangerouslySetInnerHTML={{ __html: document.html }}
+      />
       <NavigationButtons activeItem={document.link} toc={toc} />
     </main>
   )
