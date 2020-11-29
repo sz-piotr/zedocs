@@ -12,7 +12,7 @@ interface Props {
 export function Html({ project, document, toc }: Props) {
   const title =
     document.title !== project.name
-      ? `${document.title} - ${project.name}`
+      ? `${document.title} — ${project.name}`
       : document.title
   return (
     <html lang="en">

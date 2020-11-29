@@ -1,4 +1,5 @@
 import { TocItem } from '../secondPass'
+import { ArrowLeftIcon, ArrowRightIcon } from './icons'
 
 interface Props {
   activeItem: string
@@ -12,29 +13,41 @@ export function NavigationButtons({ toc, activeItem }: Props) {
     return null
   }
   const current = list[index]
-  const previous: NavItem | undefined = list[index - 1]
-  const next: NavItem | undefined = list[index + 1]
+  const previous = list[index - 1] as NavItem | undefined
+  const next = list[index + 1] as NavItem | undefined
+
+  const showPreviousSection =
+    previous?.section && previous.section !== current.section
+  const showNextSection = next?.section && next.section !== current.section
+
+  const single = !!previous !== !!next
 
   return (
-    <>
+    <nav className={single ? 'page-links page-links--single' : 'page-links'}>
       {previous && (
-        <a href={previous.link}>
-          <span>
-            {previous.section !== current.section && `${previous.section} -`}{' '}
+        <a
+          className="page-links__link page-links__link--previous"
+          href={previous.link}
+        >
+          <ArrowLeftIcon />
+          <span className="page-links__direction">
+            {showPreviousSection && `${previous.section} — `}
             Previous
           </span>
-          <strong>{previous.name}</strong>
+          <span className="page-links__name">{previous.name}</span>
         </a>
       )}
       {next && (
-        <a href={next.link}>
-          <span>
-            Next {next.section !== current.section && `- ${next.section}`}
+        <a className="page-links__link page-links__link--next" href={next.link}>
+          <ArrowRightIcon />
+          <span className="page-links__direction">
+            Next
+            {showNextSection && ` — ${next.section}`}
           </span>
-          <strong>{next.name}</strong>
+          <span className="page-links__name">{next.name}</span>
         </a>
       )}
-    </>
+    </nav>
   )
 }
 
