@@ -1,6 +1,6 @@
 import { TocItem } from '../secondPass'
 import { Main } from './Main'
-import { TableOfContents } from './TableOfContents'
+import { Sidebar } from './sidebar/Sidebar'
 import { Header } from './Header'
 import { Document, Project } from './types'
 
@@ -14,7 +14,7 @@ export function Body({ project, document, toc }: Props) {
   return (
     <body>
       <Header project={project} />
-      <TableOfContents toc={toc} activeItem={document.link} />
+      <Sidebar toc={toc} activeItem={document.link} />
       <Main document={document} toc={toc} />
       <script type="module" src="/static/zedocs.js" />
     </body>

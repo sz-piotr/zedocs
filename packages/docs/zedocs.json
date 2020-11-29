@@ -13,6 +13,7 @@
       "section": "Markdown",
       "items": [
         "src/markdown/basic-syntax.md",
+        "src/markdown/headings.md",
         "src/markdown/extensions.md"
       ]
     }

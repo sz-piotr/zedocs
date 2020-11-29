@@ -10,7 +10,7 @@ interface Props {
 
 export function Main({ document, toc }: Props) {
   return (
-    <main>
+    <main className="main">
       <Outline outline={document.outline} />
       <article
         className="article"

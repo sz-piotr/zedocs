@@ -8,21 +8,23 @@ interface Props {
 export function Header({ project }: Props) {
   return (
     <header className="header">
-      <a className="header__title" href="/">
-        {project.name}
-      </a>
-      <div className="header__right">
-        <div className="search">
-          <label className="search__icon" htmlFor="search">
-            <SearchIcon />
-          </label>
-          <input
-            className="search__input"
-            placeholder="Search..."
-            type="text"
-            name="search"
-            id="search"
-          />
+      <div className="header__content">
+        <a className="header__title" href="/">
+          {project.name}
+        </a>
+        <div className="header__right">
+          <div className="search">
+            <label className="search__icon" htmlFor="search">
+              <SearchIcon />
+            </label>
+            <input
+              className="search__input"
+              placeholder="Search..."
+              type="text"
+              name="search"
+              id="search"
+            />
+          </div>
         </div>
       </div>
     </header>
