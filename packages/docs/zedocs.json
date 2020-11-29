@@ -1,0 +1,21 @@
+{
+  "name": "ZeDocs",
+  "contents": [
+    "src/about.md",
+    {
+      "section": "Getting Started",
+      "items": [
+        "src/getting-started/installation.md",
+        "src/getting-started/configuration.md"
+      ]
+    },
+    {
+      "section": "Markdown",
+      "items": [
+        "src/markdown/basic-syntax.md",
+        "src/markdown/headings.md",
+        "src/markdown/extensions.md"
+      ]
+    }
+  ]
+}
