@@ -1,67 +1,32 @@
 # Basic Syntax
 
-This page is dedicated to discussing markdown syntax.
+With ZeDocs you will be using Markdown to write your documentation. Markdown is
+a lightweight markup language with plain-text-formatting syntax.
 
-`Code inline`. Variations `a` include `longer` and `many words`.
+This page will go over the basics of how to author Markdown files as well as
+the basic syntax.
 
-Single line code block.
+## Markdown files
+
+Markdown files are text files with an extension of `.md`. You can use any text
+editor to open and edit Markdown files.
+
+Here is an example of a file called `hello.md`:
 
 ```
-This is a code block.
+# Hello world
+
+This is my *first* document!
 ```
 
-Multi line code block
+## Inline markup
 
-```
-lorem ipsum
-I am the second line.
-Watch me man!
-```
+With Markdown you are able to style your text inline.
 
-Html
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <p>foo &apos;</p>
-    <!-- comment -->
-  </body>
-</html>
-```
-
-css
-
-```css
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-}
-
-/* foo */
-
-hr.foo > a[x='2'] {
-  box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
-  overflow: visible; /* 2 */
-}
-```
-
-js
-
-```js
-const button = document.querySelector('.dark-mode')
-button.style.display = 'block'
-if (prefersDark) {
-  darkModeEnabled = true
-}
-button.addEventListener('click', () => {
-  darkModeEnabled = !darkModeEnabled
-  const theme = darkModeEnabled ? 32 : 123e5
-})
-```
+| You write | Alternative | You see |
+| :--- | :--- | :--- |
+| `*italic*` | `_italic_` | *italic* |
+| `**bold**` | `__bold__` | **bold** |
+| `***both***` | `___both___` | ***both*** |
+| `~~strike~~` | | ~~strike~~ |
+| `_hey **nested**_` | | _hey **nested**_ |
