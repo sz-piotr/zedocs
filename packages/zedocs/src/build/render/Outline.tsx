@@ -1,4 +1,4 @@
-import { OutlineItem } from '../secondPass'
+import { OutlineItem } from '../document'
 import { ContentsIcon } from './icons'
 
 interface Props {

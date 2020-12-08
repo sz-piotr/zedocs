@@ -7,14 +7,15 @@ import { prepareHtml } from './prepareHtml'
 export function buildSecondPass(artifacts: Artifacts) {
   const toc = getTableOfContents(artifacts)
   const linkMapping = getLinkMapping(artifacts)
+  const project: Project = {
+    name: artifacts.config.name,
+  }
   const outputs = artifacts.documents.map((artifact) => {
-    const project: Project = {
-      name: artifacts.config.name,
-    }
     const document: Document = {
       title: artifact.name,
       link: artifact.slug,
-      ...prepareHtml(artifact, linkMapping),
+      outline: artifact.outline,
+      html: prepareHtml(artifact, linkMapping),
     }
     return {
       sourcePath: artifact.sourcePath,

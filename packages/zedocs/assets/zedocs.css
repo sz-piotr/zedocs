@@ -289,8 +289,34 @@ body {
   font-weight: normal;
 }
 
+.heading-link {
+  opacity: 0;
+  transition: opacity 0.1s;
+  font-weight: bold;
+  color: var(--color-brand);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.heading-link:hover {
+  text-decoration: underline;
+}
+
+.article h1 div:hover .heading-link,
+.article h2 div:hover .heading-link,
+.article h3 div:hover .heading-link,
+.article h4 div:hover .heading-link,
+.article h5 div:hover .heading-link,
+.article h6 div:hover .heading-link {
+  opacity: 1;
+}
+
 .article p {
   margin: 0 0 32px 0;
+}
+
+.article img {
+  max-width: 100%;
 }
 
 .page-links {
