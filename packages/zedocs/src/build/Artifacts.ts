@@ -6,6 +6,13 @@ export interface Document {
   slug: string
   name: string
   content: string
+  outline: OutlineItem[]
+}
+
+export interface OutlineItem {
+  name: string
+  level: number
+  link?: string
 }
 
 export interface Output {

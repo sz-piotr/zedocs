@@ -1,7 +1,10 @@
 import { sentenceCase } from 'change-case'
 import cheerio from 'cheerio'
 import path from 'path'
+import { OutlineItem } from '../Artifacts'
+import { addHeadingLinks } from './addHeadingLinks'
 import { extractLinks } from './extractLinks'
+import { getOutline } from './getOutline'
 import { parseMarkdown } from './parseMarkdown'
 
 export interface ProcessedMarkdown {
@@ -10,6 +13,7 @@ export interface ProcessedMarkdown {
   content: string
   links: string[]
   warning?: string
+  outline: OutlineItem[]
 }
 
 export function processMarkdown(
@@ -25,13 +29,16 @@ export function processMarkdown(
     frontMatter.name ??
     ($('h1').eq(0).text() || sentenceCase(path.parse(slug).name))
   const links = extractLinks($, directory)
+  const outline = getOutline($)
+  addHeadingLinks($)
 
   return {
     slug,
     name,
-    content: html,
+    content: $('body').html() ?? '',
     links,
     warning,
+    outline,
   }
 }
 
