@@ -1,6 +1,6 @@
 .menu {
+  display: none;
   z-index: $z-sidebar-menu;
-  display: block;
   position: fixed;
   top: 16px;
   left: 16px;
@@ -8,6 +8,10 @@
   height: 16px;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
+
+  @media screen and (max-width: $mobile-breakpoint) {
+    display: block;
+  }
 }
 
 .menu__top,
