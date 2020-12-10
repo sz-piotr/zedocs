@@ -1,7 +1,7 @@
 {
   "name": "ZeDocs",
   "contents": [
-    "src/about.md",
+    "src/introduction.md",
     {
       "section": "Getting Started",
       "items": [
