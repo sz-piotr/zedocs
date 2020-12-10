@@ -2,7 +2,7 @@
 slug: /
 ---
 
-# ZeDocs
+# Introduction
 
 ZeDocs is a radically simple and robust way to create your documentation.
 

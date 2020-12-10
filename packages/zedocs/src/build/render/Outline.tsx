@@ -12,9 +12,10 @@ export function Outline({ outline }: Props) {
   return (
     <nav className="outline">
       <div className="outline__content">
-        <span className="outline__title">
-          <ContentsIcon inline /> Contents
-        </span>
+        <input id="outline" className="outline__checkbox" type="checkbox" />
+        <label htmlFor="outline" className="outline__title">
+          <ContentsIcon inline /> <span>Contents</span>
+        </label>
         <ol className="outline__items">
           {outline.map((item, i) => (
             <li

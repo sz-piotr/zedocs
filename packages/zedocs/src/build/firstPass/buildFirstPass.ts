@@ -10,8 +10,8 @@ import { BuildQueue } from './BuildQueue'
 import { getTargetCollisions } from './getTargetCollisions'
 import { processItem } from './processItem'
 
-const ZEDOCS_JS_PATH = resolve(__dirname, '../../../assets/zedocs.js')
-const ZEDOCS_CSS_PATH = resolve(__dirname, '../../../assets/zedocs.css')
+const ZEDOCS_JS_PATH = resolve(__dirname, '../../scripts/zedocs.js')
+const ZEDOCS_CSS_PATH = resolve(__dirname, '../../styles/zedocs.css')
 
 export function buildFirstPass(configPath: string | undefined) {
   const artifacts = new Artifacts()

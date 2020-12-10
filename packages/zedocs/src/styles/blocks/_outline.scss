@@ -1,0 +1,78 @@
+.outline {
+  position: fixed;
+  top: var(--header-height);
+  right: 0;
+  width: var(--page-right-size);
+  height: calc(100vh - var(--header-height));
+  overflow: hidden auto;
+}
+
+.outline__checkbox {
+  display: none;
+}
+
+.outline__content {
+  width: var(--outline-width);
+  padding: 32px 36px 32px 0;
+}
+
+@media screen and (max-width: 1100px) {
+  .outline {
+    position: static;
+    width: 100%;
+    height: unset;
+  }
+
+  .outline__content {
+    width: 100%;
+    padding: 32px 64px;
+  }
+}
+
+.outline__title {
+  display: block;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--color-text-2);
+  border-left: 1px solid var(--color-bg-3);
+  padding: 8px 0 8px 16px;
+}
+
+.outline__items {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.outline__item {
+  border-left: 1px solid var(--color-bg-3);
+  padding: 8px 0 8px 16px;
+}
+
+.outline__link {
+  font-size: 0.9rem;
+  color: var(--color-text-1);
+  text-decoration: none;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.outline__item--level-3 {
+  padding-left: 24px;
+}
+
+.outline__item--level-4 {
+  padding-left: 32px;
+}
+
+.outline__item--level-5 {
+  padding-left: 40px;
+}
+
+.outline__item--level-6 {
+  padding-left: 48px;
+}

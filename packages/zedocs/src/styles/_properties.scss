@@ -1,0 +1,37 @@
+:root {
+  --color-text-1: rgb(34, 34, 34);
+  --color-text-2: rgb(95, 95, 95);
+  --color-bg-1: rgb(255, 255, 255);
+  --color-bg-2: rgb(250, 250, 250);
+  --color-bg-3: rgb(227, 227, 227);
+  --color-bg-4: rgb(205, 205, 205);
+  --color-brand: rgb(230, 0, 88);
+  --color-shadow: rgba(0, 0, 0, 0.2);
+
+  --header-height: 64px;
+  --sidebar-width: 300px;
+  --outline-width: 250px;
+
+  --body-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  --heading-font: charter, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --code-font: Menlo, Monaco, 'Courier New', Courier, monospace;
+
+  /* COMPUTED */
+  --page-left-size: var(--sidebar-width);
+  --page-right-size: var(--outline-width);
+}
+
+@media screen and (min-width: 1440px) {
+  :root {
+    --page-left-size: calc(var(--sidebar-width) + 50vw - 720px);
+    --page-right-size: calc(var(--outline-width) + 50vw - 720px);
+  }
+}
+
+@media screen and (max-width: 1350px) {
+  :root {
+    --sidebar-width: 230px;
+    --outline-width: 230px;
+  }
+}
