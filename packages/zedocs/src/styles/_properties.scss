@@ -17,21 +17,21 @@
   --heading-font: charter, Georgia, Cambria, 'Times New Roman', Times, serif;
   --code-font: Menlo, Monaco, 'Courier New', Courier, monospace;
 
-  /* COMPUTED */
-  --page-left-size: var(--sidebar-width);
-  --page-right-size: var(--outline-width);
-}
+  --page-left-size: calc(var(--sidebar-width) + 50vw - 720px);
+  --page-right-size: calc(var(--outline-width) + 50vw - 720px);
 
-@media screen and (min-width: 1440px) {
-  :root {
-    --page-left-size: calc(var(--sidebar-width) + 50vw - 720px);
-    --page-right-size: calc(var(--outline-width) + 50vw - 720px);
+  @media screen and (max-width: $laptop-breakpoint) {
+    --page-left-size: var(--sidebar-width);
+    --page-right-size: var(--outline-width);
   }
-}
 
-@media screen and (max-width: 1350px) {
-  :root {
-    --sidebar-width: 230px;
-    --outline-width: 230px;
+  @media screen and (max-width: $tablet-breakpoint) {
+    --sidebar-width: 250px;
+    --page-right-size: 0;
+  }
+
+  @media screen and (max-width: $mobile-breakpoint) {
+    --header-height: 48px;
+    --page-left-size: 0;
   }
 }

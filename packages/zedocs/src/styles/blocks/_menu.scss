@@ -1,0 +1,54 @@
+.menu {
+  z-index: $z-sidebar-menu;
+  display: block;
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  width: 24px;
+  height: 16px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menu__top,
+.menu__middle,
+.menu__bottom {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: #000;
+  border-radius: 2px;
+  position: absolute;
+}
+
+.menu__top {
+  top: 0;
+  transition: top 0.075s 0.12s ease, transform 0.075s ease;
+
+  .sidebar__checkbox:checked ~ .menu & {
+    transition: top 0.075s ease, transform 0.075s 0.12s ease;
+    top: 7px;
+    transform: rotate(-45deg);
+  }
+}
+
+.menu__middle {
+  top: 7px;
+  opacity: 1;
+  transition: opacity 0.075s ease;
+
+  .sidebar__checkbox:checked ~ .menu & {
+    opacity: 0;
+  }
+}
+
+.menu__bottom {
+  top: 14px;
+  transition: top 0.075s 0.12s ease, transform 0.075s ease;
+
+  .sidebar__checkbox:checked ~ .menu & {
+    transition: top 0.075s ease, transform 0.075s 0.12s ease;
+    top: 7px;
+    transform: rotate(45deg);
+  }
+}

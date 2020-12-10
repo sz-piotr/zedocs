@@ -3,6 +3,16 @@
   padding: 0 64px 32px 64px;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
+
+  @media screen and (max-width: $tablet-breakpoint) {
+    padding: 0 32px 32px 32px;
+    gap: 16px;
+  }
+
+  @media screen and (max-width: $mobile-breakpoint) {
+    grid-auto-flow: row;
+    grid-template-columns: unset;
+  }
 }
 
 .page-links--single {
@@ -23,20 +33,29 @@
   box-shadow: 0 1px 6px -2px var(--color-shadow);
   padding: 16px 16px 16px 56px;
   text-align: right;
+
+  .icon {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    color: var(--color-brand);
+    transform: translate(0, -50%);
+  }
 }
 
 .page-links__link--next {
   align-items: flex-start;
   text-align: left;
   padding: 16px 56px 16px 16px;
-}
 
-.page-links__link .icon {
-  position: absolute;
-  top: 50%;
-  left: 16px;
-  color: var(--color-brand);
-  transform: translate(0, -50%);
+  .icon {
+    left: unset;
+    right: 16px;
+  }
+
+  @media screen and (max-width: $mobile-breakpoint) {
+    grid-row: 1;
+  }
 }
 
 .page-links__direction {
@@ -45,9 +64,4 @@
   font-weight: 300;
   color: var(--color-text-2);
   margin-bottom: 8px;
-}
-
-.page-links__link--next .icon {
-  left: unset;
-  right: 16px;
 }
