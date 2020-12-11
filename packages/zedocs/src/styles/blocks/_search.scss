@@ -6,7 +6,7 @@
   border-left: 1px solid var(--color-bg-3);
   height: 32px;
 
-  @media screen and (max-width: $tablet-breakpoint) {
+  @media (max-width: $tablet-breakpoint) {
     border: none;
   }
 }
@@ -27,6 +27,8 @@
   height: 24px;
   width: calc(var(--outline-width) - 80px);
   transition: width 0.2s ease-in;
+  color: var(--color-text-1);
+  background-color: transparent;
 
   &:focus {
     width: 300px;

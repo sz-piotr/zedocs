@@ -4,12 +4,12 @@
   grid-template-columns: 1fr 1fr;
   gap: 32px;
 
-  @media screen and (max-width: $tablet-breakpoint) {
+  @media (max-width: $tablet-breakpoint) {
     padding: 0 32px 32px 32px;
     gap: 16px;
   }
 
-  @media screen and (max-width: $mobile-breakpoint) {
+  @media (max-width: $mobile-breakpoint) {
     grid-auto-flow: row;
     grid-template-columns: unset;
   }
@@ -53,7 +53,7 @@
     right: 16px;
   }
 
-  @media screen and (max-width: $mobile-breakpoint) {
+  @media (max-width: $mobile-breakpoint) {
     grid-row: 1;
   }
 }

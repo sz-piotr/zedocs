@@ -9,7 +9,7 @@
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 
-  @media screen and (max-width: $mobile-breakpoint) {
+  @media (max-width: $mobile-breakpoint) {
     display: block;
   }
 }
@@ -20,7 +20,7 @@
   display: block;
   width: 24px;
   height: 2px;
-  background-color: #000;
+  background-color: var(--color-text-1);
   border-radius: 2px;
   position: absolute;
 }
