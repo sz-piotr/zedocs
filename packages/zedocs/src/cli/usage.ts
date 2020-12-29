@@ -7,7 +7,7 @@ usage:
 
     zedocs [--version, -v] [--help, -h]
     zedocs build [-c, --config CONFIG]
-    zedocs serve [-c, --config CONFIG]
+    zedocs serve [-c, --config CONFIG] [-p, --port PORT]
 
 commands:
 
@@ -19,4 +19,5 @@ arguments:
     --version, -v         Print the current version
     --help, -h            Print this message
     -c, --config CONFIG   Path to the config file. Defaults to ./zedocs.json
+    -p, --port PORT       Port to use for the development web server
 `

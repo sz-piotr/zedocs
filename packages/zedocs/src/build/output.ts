@@ -1,7 +1,7 @@
 import fsx from 'fs-extra'
 import path from 'path'
-import { Artifacts } from './Artifacts'
-import { writeFile } from './files'
+import { Artifacts } from '../compile/Artifacts'
+import { writeFile } from '../compile/files'
 
 export function output({ config, documents, outputs }: Artifacts) {
   const dist = path.join(config.directory, 'dist')
