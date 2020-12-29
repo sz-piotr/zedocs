@@ -1,39 +1,56 @@
-import chalk from 'chalk'
 import chokidar from 'chokidar'
 import { CliOptions } from '../cli/options'
 import { compile } from '../compile'
+import { Artifacts } from '../compile/Artifacts'
+import {
+  logChangesDetected,
+  logCompiledSuccessfully,
+  logCompiledWithWarnings,
+  logCompiledWithErrors,
+} from '../logger'
 import { Outputs } from './outputs'
 import { runServer } from './runServer'
 
 export function serve(options: CliOptions) {
-  let artifacts = compile(options.config)
+  const artifacts = compile(options.config)
   const outputs = new Outputs()
-  outputs.update(artifacts.outputs)
-
   const watcher = chokidar
-    .watch(artifacts.inputs, { disableGlobbing: true })
-    .on('change', onChange)
-    .on('unlink', onChange)
+    .watch([], { disableGlobbing: true })
+    .on('change', update)
+    .on('unlink', update)
 
-  function onChange() {
-    console.log(chalk.green('Changes detected. Recompiling.'))
-    watcher.unwatch(artifacts.inputs)
-    try {
-      const start = Date.now()
-      artifacts = compile(options.config)
-      outputs.update(artifacts.outputs)
-      watcher.add(artifacts.inputs)
-      const duration = Date.now() - start
-      console.log(`Compiled successfully. ${chalk.green(`(${duration} ms)`)}\n`)
-    } catch (e: unknown) {
-      watcher.add(artifacts.inputs)
-      if (e instanceof Error && e.message === 'Build failed') {
-        console.log(chalk.red('Build completed with errors.\n'))
-      } else {
-        throw e
-      }
-    }
-  }
-
+  onCompile(outputs, watcher, artifacts)
   runServer(outputs, options)
+
+  function update() {
+    onChange(options.config, outputs, watcher, artifacts)
+  }
+}
+
+function onChange(
+  config: string | undefined,
+  outputs: Outputs,
+  watcher: chokidar.FSWatcher,
+  artifacts: Artifacts
+) {
+  logChangesDetected()
+  watcher.unwatch(artifacts.inputs)
+  artifacts = compile(config)
+  onCompile(outputs, watcher, artifacts)
+}
+
+function onCompile(
+  outputs: Outputs,
+  watcher: chokidar.FSWatcher,
+  artifacts: Artifacts
+) {
+  outputs.update(artifacts.outputs)
+  watcher.add(artifacts.inputs)
+  if (artifacts.hasErrors) {
+    logCompiledWithErrors()
+  } else if (artifacts.hasWarnings) {
+    logCompiledWithWarnings(artifacts.compileTimeMs)
+  } else {
+    logCompiledSuccessfully(artifacts.compileTimeMs)
+  }
 }

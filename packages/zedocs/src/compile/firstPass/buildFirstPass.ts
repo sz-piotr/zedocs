@@ -1,10 +1,6 @@
 import { resolve } from 'path'
-import {
-  BuildError,
-  BuildWarning,
-  printError,
-  printWarning,
-} from '../../errors'
+import { BuildError, BuildWarning } from '../../errors'
+import { logErrors, logWarnings } from '../../logger'
 import { Artifacts } from '../Artifacts'
 import { BuildQueue } from './BuildQueue'
 import { getTargetCollisions } from './getTargetCollisions'
@@ -14,6 +10,7 @@ const ZEDOCS_JS_PATH = resolve(__dirname, '../../scripts/zedocs.js')
 const ZEDOCS_CSS_PATH = resolve(__dirname, '../../styles/zedocs.css')
 
 export function buildFirstPass(configPath: string | undefined) {
+  const startTimeMs = Date.now()
   const artifacts = new Artifacts()
   const queue = new BuildQueue()
   queue.add({ type: 'CONFIG', path: resolve(configPath ?? 'zedocs.json') })
@@ -31,22 +28,11 @@ export function buildFirstPass(configPath: string | undefined) {
   }
   errors.push(...getTargetCollisions(artifacts))
 
-  printWarnings(warnings)
-  printErrors(errors)
+  logWarnings(warnings)
+  logErrors(errors)
+
+  artifacts.hasWarnings = warnings.length !== 0
+  artifacts.hasErrors = errors.length !== 0
+  artifacts.compileTimeMs = Date.now() - startTimeMs
   return artifacts
-}
-
-function printWarnings(warnings: BuildWarning[]) {
-  for (const { path, message } of warnings) {
-    printWarning(path, message)
-  }
-}
-
-function printErrors(errors: BuildError[]) {
-  for (const { path, message } of errors) {
-    printError(path, message)
-  }
-  if (errors.length > 0) {
-    throw new Error('Build failed')
-  }
 }

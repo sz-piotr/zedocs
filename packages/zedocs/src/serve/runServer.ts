@@ -1,5 +1,6 @@
 import express from 'express'
 import { CliOptions } from '../cli/options'
+import { logListening } from '../logger'
 import { Outputs } from './outputs'
 
 export function runServer(outputs: Outputs, options: CliOptions) {
@@ -23,7 +24,6 @@ export function runServer(outputs: Outputs, options: CliOptions) {
     }
   })
 
-  app.listen(options.port ?? 8080, function () {
-    console.log(`Listening on http://localhost:8080`)
-  })
+  const port = options.port ?? 8080
+  app.listen(port, () => logListening(port))
 }

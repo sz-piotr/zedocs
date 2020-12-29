@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "zedocs build",
+    "start": "zedocs serve",
     "lint": "prettier src --check",
     "lint:fix": "prettier src --write"
   },

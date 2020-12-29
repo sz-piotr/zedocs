@@ -23,9 +23,12 @@ export interface Output {
 
 export class Artifacts {
   private _config?: Config
+  compileTimeMs = 0
   documents: Document[] = []
   inputs: string[] = []
   outputs: Output[] = []
+  hasErrors = false
+  hasWarnings = false
 
   get config() {
     if (!this._config) {
