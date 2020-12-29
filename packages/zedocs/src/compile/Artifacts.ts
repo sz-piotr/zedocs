@@ -24,6 +24,7 @@ export interface Output {
 export class Artifacts {
   private _config?: Config
   documents: Document[] = []
+  inputs: string[] = []
   outputs: Output[] = []
 
   get config() {

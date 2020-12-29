@@ -24,6 +24,7 @@ export function buildFirstPass(configPath: string | undefined) {
   const errors: BuildError[] = []
 
   for (let item = queue.remove(); item !== undefined; item = queue.remove()) {
+    artifacts.inputs.push(item.path)
     const result = processItem(item, queue, artifacts)
     warnings.push(...result.warnings)
     errors.push(...result.errors)

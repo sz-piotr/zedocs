@@ -1,12 +1,12 @@
-import { Artifacts } from '../compile/Artifacts'
+import { Output } from '../compile/Artifacts'
 import { extname, dirname } from 'path'
 
 export class Outputs {
   private items = new Map<string, { content: string | Buffer; type: string }>()
 
-  update(artifacts: Artifacts) {
+  update(outputs: Output[]) {
     this.items.clear()
-    for (const artifact of artifacts.outputs) {
+    for (const artifact of outputs) {
       const paths = [artifact.targetPath]
       const type = extname(artifact.targetPath)
       if (type === '.html') {
