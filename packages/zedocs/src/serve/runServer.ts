@@ -1,9 +1,9 @@
 import express from 'express'
 import { CliOptions } from '../cli/options'
-import { Output } from '../compile/Artifacts'
-import { getOutput } from './outputs'
+import { logListening } from '../logger'
+import { Outputs } from './outputs'
 
-export function runServer(outputs: Map<string, Output>, options: CliOptions) {
+export function runServer(outputs: Outputs, options: CliOptions) {
   const app = express()
 
   app.use(function (req, res, next) {
@@ -16,7 +16,7 @@ export function runServer(outputs: Map<string, Output>, options: CliOptions) {
   })
 
   app.get('*', function (req, res, next) {
-    const output = getOutput(outputs, req.path)
+    const output = outputs.get(req.path)
     if (output) {
       res.type(output.type).status(200).send(output.content)
     } else {
@@ -24,7 +24,6 @@ export function runServer(outputs: Map<string, Output>, options: CliOptions) {
     }
   })
 
-  app.listen(options.port ?? 8080, function () {
-    console.log(`Listening on http://localhost:8080`)
-  })
+  const port = options.port ?? 8080
+  app.listen(port, () => logListening(port))
 }

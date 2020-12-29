@@ -3,6 +3,8 @@ import { buildSecondPass } from './secondPass'
 
 export function compile(configPath: string | undefined) {
   const artifacts = buildFirstPass(configPath)
-  buildSecondPass(artifacts)
+  if (!artifacts.hasErrors) {
+    buildSecondPass(artifacts)
+  }
   return artifacts
 }

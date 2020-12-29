@@ -1,26 +1,24 @@
-import { Artifacts, Output } from '../compile/Artifacts'
-import { join, extname } from 'path'
+import { Output } from '../compile/Artifacts'
+import { extname, dirname } from 'path'
 
-export function getOutputs(artifacts: Artifacts) {
-  const output = new Map<string, Output>()
-  for (const artifact of artifacts.outputs) {
-    output.set(artifact.targetPath, artifact)
-  }
-  return output
-}
-export function getOutput(
-  outputs: Map<string, Output>,
-  path: string
-): { content: string | Buffer; type: string } | undefined {
-  let result = outputs.get(path)
-  if (result) {
-    const extension = extname(path)
-    const content = result.content
-    return { content, type: extension }
-  } else {
-    result = outputs.get(join(path, 'index.html'))
-    if (result) {
-      return { content: result.content, type: 'html' }
+export class Outputs {
+  private items = new Map<string, { content: string | Buffer; type: string }>()
+
+  update(outputs: Output[]) {
+    this.items.clear()
+    for (const artifact of outputs) {
+      const paths = [artifact.targetPath]
+      const type = extname(artifact.targetPath)
+      if (type === '.html') {
+        paths.push(dirname(artifact.targetPath))
+      }
+      for (const path of paths) {
+        this.items.set(path, { content: artifact.content, type })
+      }
     }
+  }
+
+  get(path: string) {
+    return this.items.get(path)
   }
 }
