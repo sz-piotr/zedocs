@@ -1,10 +1,11 @@
 import { CliOptions } from '../cli/options'
 import { compile } from '../compile'
-import { getOutputs } from './outputs'
+import { Outputs } from './outputs'
 import { runServer } from './runServer'
 
 export function serve(options: CliOptions) {
   const artifacts = compile(options.config)
-  const outputs = getOutputs(artifacts)
+  const outputs = new Outputs()
+  outputs.update(artifacts)
   runServer(outputs, options)
 }
