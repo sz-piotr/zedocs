@@ -47,6 +47,6 @@ function printErrors(errors: BuildError[]) {
     printError(path, message)
   }
   if (errors.length > 0) {
-    process.exit(errors.length)
+    throw new Error('Build failed')
   }
 }

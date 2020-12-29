@@ -7,6 +7,14 @@ export function build(options: CliOptions) {
   if (options.port !== undefined) {
     printWarning('zedocs', 'Specifying the port does nothing when building.')
   }
-  const artifacts = compile(options.config)
-  output(artifacts)
+  try {
+    const artifacts = compile(options.config)
+    output(artifacts)
+  } catch (e: unknown) {
+    if (e instanceof Error && e.message === 'Build failed') {
+      process.exit(1)
+    } else {
+      throw e
+    }
+  }
 }

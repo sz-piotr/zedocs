@@ -1,4 +1,5 @@
 import chalk from 'chalk'
+import { join } from 'path'
 
 export function exitWithError(where: string, error: Error | string): never {
   printError(where, error)
@@ -6,13 +7,23 @@ export function exitWithError(where: string, error: Error | string): never {
 }
 
 export function printError(where: string, error: Error | string) {
-  console.error(chalk.red(`ERROR ${where}:\n${getIndentedMessage(error)}\n`))
+  const location = shortenWhere(where)
+  const message = getIndentedMessage(error)
+  console.error(chalk.red(`ERROR ${location}:\n${message}\n`))
 }
 
 export function printWarning(where: string, warning: Error | string) {
-  console.warn(
-    chalk.yellow(`WARNING ${where}:\n${getIndentedMessage(warning)}\n`)
-  )
+  const location = shortenWhere(where)
+  const message = getIndentedMessage(warning)
+  console.warn(chalk.yellow(`WARNING ${location}:\n${message}\n`))
+}
+
+function shortenWhere(where: string) {
+  const cwd = join(process.cwd(), '/')
+  if (where.startsWith(cwd)) {
+    return where.substring(cwd.length)
+  }
+  return where
 }
 
 function getIndentedMessage(error: Error | string) {
