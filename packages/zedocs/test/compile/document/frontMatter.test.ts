@@ -1,5 +1,5 @@
 import { expect } from 'earljs'
-import { parseFrontMatter } from '../../../src/build/document/frontMatter'
+import { parseFrontMatter } from '../../../src/compile/document/frontMatter'
 
 describe('frontMatter', () => {
   it('can correctly parse YAML', () => {

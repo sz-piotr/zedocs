@@ -1,5 +1,5 @@
 import { expect } from 'earljs'
-import { parseConfig } from '../../../src/build/config/parse'
+import { parseConfig } from '../../../src/compile/config/parse'
 
 describe('parseConfig', () => {
   it('can identify unrecognized keys', () => {

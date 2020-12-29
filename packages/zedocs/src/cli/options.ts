@@ -5,9 +5,19 @@ export interface CliOptions {
   config?: string
   version?: boolean
   help?: boolean
+  port?: number
 }
 
-const ALLOWED_OPTIONS = ['h', 'help', 'v', 'version', 'c', 'config']
+const ALLOWED_OPTIONS = [
+  'h',
+  'help',
+  'v',
+  'version',
+  'c',
+  'config',
+  'p',
+  'port',
+]
 
 export function parseCliOptions(args: string[]): CliOptions {
   const parsed = minimist(args)
@@ -51,6 +61,16 @@ export function parseCliOptions(args: string[]): CliOptions {
       )
     }
     options.config = config
+  }
+
+  const port = get(parsed, 'p', 'port')
+  if (port !== undefined) {
+    if (typeof port !== 'number') {
+      throw new Error(
+        'Invalid port value passed as argument. See "zedocs --help".'
+      )
+    }
+    options.port = port
   }
 
   return options

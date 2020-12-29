@@ -47,6 +47,10 @@ describe('parseCliOptions', () => {
       args: ['serve', '--config', 'aaa'],
       result: { command: 'serve', config: 'aaa' },
     },
+    {
+      args: ['serve', '-p', '8080'],
+      result: { command: 'serve', port: 8080 },
+    },
   ]
   for (const { args, result } of successCases) {
     it(`parses "${args.join(' ')}"`, () => {
@@ -73,6 +77,10 @@ describe('parseCliOptions', () => {
       error: 'Both -c and --config specified.',
     },
     {
+      args: ['-p', '--port'],
+      error: 'Both -p and --port specified.',
+    },
+    {
       args: ['foo'],
       error: 'Unknown command "foo". See "zedocs --help".',
     },
@@ -83,6 +91,10 @@ describe('parseCliOptions', () => {
     {
       args: ['-c', '3'],
       error: 'Invalid config value passed as argument. See "zedocs --help".',
+    },
+    {
+      args: ['-p', 'foo'],
+      error: 'Invalid port value passed as argument. See "zedocs --help".',
     },
   ]
   for (const { args, error } of errorCases) {
