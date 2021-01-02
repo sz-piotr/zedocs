@@ -13,6 +13,10 @@
   overflow: hidden auto;
 
   @media (max-width: $mobile-breakpoint) {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
     width: 250px;
     height: 100%;
     top: 0;
@@ -49,12 +53,22 @@
   }
 }
 
+.sidebar__icons {
+  display: none;
+  height: 48px;
+
+  @media (max-width: $mobile-breakpoint) {
+    display: flex;
+    align-items: center;
+  }
+}
+
 .sidebar__content {
   padding: 32px 0;
   width: var(--sidebar-width);
 
   @media (max-width: $mobile-breakpoint) {
-    padding-top: 47px;
+    padding-top: 16px;
   }
 }
 
