@@ -4,6 +4,10 @@
   @media (max-width: $tablet-breakpoint) {
     padding: 32px;
   }
+
+  @media (max-width: $mobile-breakpoint) {
+    padding: 16px;
+  }
 }
 
 .article h1,
@@ -22,6 +26,10 @@
   margin-bottom: 32px;
   font-size: 2rem;
   font-weight: normal;
+
+  @media (max-width: $mobile-breakpoint) {
+    padding-bottom: 32px;
+  }
 }
 
 .article h2 {
@@ -53,8 +61,12 @@
 }
 
 .article p {
-  margin: 0 0 32px 0;
-  line-height: $line-height-text;
+  margin: 0 0 16px 0;
+  line-height: 1.7;
+}
+
+.article pre {
+  margin: 0 0 16px 0;
 }
 
 .article img {

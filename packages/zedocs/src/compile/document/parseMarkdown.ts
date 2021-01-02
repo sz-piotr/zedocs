@@ -3,6 +3,7 @@ import MarkdownItAnchor from 'markdown-it-anchor'
 import MarkdownItContainer from 'markdown-it-container'
 import MarkdownItFrontMatter from 'markdown-it-front-matter'
 import { FrontMatter, parseFrontMatter } from './frontMatter'
+import { highlight } from './highlight'
 
 interface MarkdownParseResult {
   html: string
@@ -13,7 +14,7 @@ interface MarkdownParseResult {
 export function parseMarkdown(content: string): MarkdownParseResult {
   let frontMatter: FrontMatter = {}
   let warning: string | undefined
-  const html = new MarkdownIt()
+  const html = new MarkdownIt({ highlight })
     .use(MarkdownItAnchor)
     .use(MarkdownItContainer, 'info')
     .use(MarkdownItContainer, 'note')
