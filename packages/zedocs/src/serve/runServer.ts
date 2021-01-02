@@ -1,9 +1,8 @@
 import express from 'express'
-import { CliOptions } from '../cli/options'
 import { logListening } from '../logger'
 import { Outputs } from './outputs'
 
-export function runServer(outputs: Outputs, options: CliOptions) {
+export function runServer(outputs: Outputs, port: number) {
   const app = express()
 
   app.use(function (req, res, next) {
@@ -24,6 +23,5 @@ export function runServer(outputs: Outputs, options: CliOptions) {
     }
   })
 
-  const port = options.port ?? 8080
   app.listen(port, () => logListening(port))
 }

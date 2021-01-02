@@ -4,7 +4,7 @@ import { getLinkMapping } from './getLinkMapping'
 import { getTableOfContents } from './getTableOfContents'
 import { prepareHtml } from './prepareHtml'
 
-export function buildSecondPass(artifacts: Artifacts) {
+export function buildSecondPass(artifacts: Artifacts, liveReload: boolean) {
   const toc = getTableOfContents(artifacts)
   const linkMapping = getLinkMapping(artifacts)
   const project: Project = {
@@ -20,7 +20,7 @@ export function buildSecondPass(artifacts: Artifacts) {
     return {
       sourcePath: artifact.sourcePath,
       targetPath: artifact.targetPath,
-      content: render(project, document, toc),
+      content: render(project, document, toc, liveReload),
     }
   })
   artifacts.outputs.push(...outputs)

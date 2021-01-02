@@ -26,6 +26,7 @@
     "prebuild": "rimraf dist",
     "build": "yarn build:ts && yarn build:sass",
     "build:ts": "tsc -p tsconfig.build.json",
+    "build:ts-fast": "tsc -p tsconfig.build.json --incremental",
     "build:sass": "sass --no-source-map src/styles/zedocs.scss dist/styles/zedocs.css",
     "test": "mocha",
     "prepublishOnly": "yarn build"
@@ -44,6 +45,7 @@
     "minimist": "^1.2.5",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "ws": "^7.4.2",
     "yaml": "^1.10.0",
     "zod": "^2.0.0-beta.29"
   },
@@ -59,6 +61,7 @@
     "@types/mocha": "^8.2.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@types/ws": "^7.4.0",
     "earljs": "^0.1.10",
     "mocha": "^8.2.1",
     "sass": "^1.30.0",

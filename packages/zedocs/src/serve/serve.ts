@@ -10,9 +10,10 @@ import {
 } from '../logger'
 import { Outputs } from './outputs'
 import { runServer } from './runServer'
+import { runLiveReload } from './runLiveReload'
 
 export function serve(options: CliOptions) {
-  const artifacts = compile(options.config)
+  const artifacts = compile(options.config, { liveReload: true })
   const outputs = new Outputs()
   const watcher = chokidar
     .watch([], { disableGlobbing: true })
@@ -20,7 +21,8 @@ export function serve(options: CliOptions) {
     .on('unlink', update)
 
   onCompile(outputs, watcher, artifacts)
-  runServer(outputs, options)
+  runServer(outputs, options.port ?? 8080)
+  runLiveReload(outputs)
 
   function update() {
     onChange(options.config, outputs, watcher, artifacts)
@@ -35,7 +37,7 @@ function onChange(
 ) {
   logChangesDetected()
   watcher.unwatch(artifacts.inputs)
-  artifacts = compile(config)
+  artifacts = compile(config, { liveReload: true })
   onCompile(outputs, watcher, artifacts)
 }
 
