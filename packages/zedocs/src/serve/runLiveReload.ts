@@ -1,11 +1,10 @@
 import express from 'express'
-import { join } from 'path'
 import url from 'url'
 import ws from 'ws'
 import { Outputs } from './outputs'
 import { parseLiveReloadMessage } from './parseLiveReloadMessage'
 
-const LIVE_RELOAD_SOURCE_FILE = join(__dirname, '../../livereload.js')
+const LIVE_RELOAD_SOURCE_FILE = require.resolve('livereload-js')
 const LIVE_RELOAD_PORT = 35729
 
 const HANDSHAKE = {
