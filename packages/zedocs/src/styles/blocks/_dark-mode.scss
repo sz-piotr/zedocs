@@ -1,0 +1,41 @@
+.dark-mode {
+  display: none;
+  background: none;
+  color: var(--text-primary);
+  border: none;
+  padding: 0;
+  margin-right: 16px;
+  cursor: pointer;
+
+  .icon:nth-child(1) {
+    display: block;
+
+    html[data-theme='light'] & {
+      display: block;
+    }
+
+    html[data-theme='dark'] & {
+      display: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      display: none;
+    }
+  }
+
+  .icon:nth-child(2) {
+    display: none;
+
+    html[data-theme='light'] & {
+      display: none;
+    }
+
+    html[data-theme='dark'] & {
+      display: block;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      display: block;
+    }
+  }
+}

@@ -1,4 +1,6 @@
 export * from './ArrowLeftIcon'
 export * from './ArrowRightIcon'
 export * from './ContentsIcon'
+export * from './MoonIcon'
 export * from './SearchIcon'
+export * from './SunIcon'

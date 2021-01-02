@@ -49,6 +49,10 @@
 }
 
 .header__right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
   @media (max-width: $mobile-breakpoint) {
     display: none;
   }

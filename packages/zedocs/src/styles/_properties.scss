@@ -1,3 +1,14 @@
+@mixin light-mode {
+  --text-primary: var(--lm-text-primary);
+  --text-secondary: var(--lm-text-secondary);
+  --background-primary: var(--lm-background-primary);
+  --background-secondary: var(--lm-background-secondary);
+  --sidebar-background: var(--lm-sidebar-background);
+  --sidebar-hover: var(--lm-sidebar-hover);
+  --theme: var(--lm-theme);
+  --shadow: var(--lm-shadow);
+}
+
 @mixin dark-mode {
   --text-primary: var(--dm-text-primary);
   --text-secondary: var(--dm-text-secondary);
@@ -10,14 +21,14 @@
 }
 
 :root {
-  --text-primary: rgb(34, 34, 34);
-  --text-secondary: rgb(95, 95, 95);
-  --background-primary: rgb(255, 255, 255);
-  --background-secondary: rgb(227, 227, 227);
-  --sidebar-background: rgb(250, 250, 250);
-  --sidebar-hover: rgb(200, 200, 200);
-  --theme: rgb(92, 123, 244);
-  --shadow: rgba(0, 0, 0, 0.2);
+  --lm-text-primary: rgb(34, 34, 34);
+  --lm-text-secondary: rgb(95, 95, 95);
+  --lm-background-primary: rgb(255, 255, 255);
+  --lm-background-secondary: rgb(227, 227, 227);
+  --lm-sidebar-background: rgb(250, 250, 250);
+  --lm-sidebar-hover: rgb(200, 200, 200);
+  --lm-theme: rgb(92, 123, 244);
+  --lm-shadow: rgba(0, 0, 0, 0.2);
 
   --dm-text-primary: rgb(255, 255, 255);
   --dm-text-secondary: rgb(200, 200, 200);
@@ -27,6 +38,8 @@
   --dm-sidebar-hover: rgb(5, 5, 5);
   --dm-theme: rgb(255, 203, 48);
   --dm-shadow: rgba(0, 0, 0, 1);
+
+  @include light-mode();
 
   --header-height: 64px;
   --sidebar-width: 300px;
@@ -60,6 +73,10 @@
   }
 }
 
-.dark {
+html[data-theme='dark'] {
   @include dark-mode();
+}
+
+html[data-theme='light'] {
+  @include light-mode();
 }
