@@ -23,15 +23,15 @@ Html
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <p>foo &apos;</p>
-  <!-- comment -->
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>foo &apos;</p>
+    <!-- comment -->
+  </body>
 </html>
 ```
 
@@ -45,7 +45,7 @@ h1 {
 
 /* foo */
 
-hr.foo > a[x=2] {
+hr.foo > a[x='2'] {
   box-sizing: content-box; /* 1 */
   height: 0; /* 1 */
   overflow: visible; /* 2 */
@@ -55,13 +55,13 @@ hr.foo > a[x=2] {
 js
 
 ```js
-const button = document.querySelector('.dark-mode');
-button.style.display = 'block';
+const button = document.querySelector('.dark-mode')
+button.style.display = 'block'
 if (prefersDark) {
-  darkModeEnabled = true;
+  darkModeEnabled = true
 }
 button.addEventListener('click', () => {
-  darkModeEnabled = !darkModeEnabled;
-  const theme = darkModeEnabled ? 32 : 123e5;
-});
+  darkModeEnabled = !darkModeEnabled
+  const theme = darkModeEnabled ? 32 : 123e5
+})
 ```
