@@ -16,6 +16,12 @@
   --code-string: var(--lm-code-string);
   --code-error: var(--lm-code-error);
   --code-operator: var(--lm-code-operator);
+  --warning-background: var(--lm-warning-background);
+  --warning-text: var(--lm-warning-text);
+  --info-background: var(--lm-info-background);
+  --info-text: var(--lm-info-text);
+  --note-background: var(--lm-note-background);
+  --note-text: var(--lm-note-text);
 }
 
 @mixin dark-mode {
@@ -36,6 +42,12 @@
   --code-string: var(--dm-code-string);
   --code-error: var(--dm-code-error);
   --code-operator: var(--dm-code-operator);
+  --warning-background: var(--dm-warning-background);
+  --warning-text: var(--dm-warning-text);
+  --info-background: var(--dm-info-background);
+  --info-text: var(--dm-info-text);
+  --note-background: var(--dm-note-background);
+  --note-text: var(--dm-note-text);
 }
 
 :root {
@@ -56,6 +68,12 @@
   --lm-code-string: rgb(45, 145, 84);
   --lm-code-error: rgb(170, 13, 26);
   --lm-code-operator: rgb(19, 112, 116);
+  --lm-warning-background: rgb(243, 244, 172);
+  --lm-warning-text: rgb(161, 124, 23);
+  --lm-info-background: rgb(214, 222, 255);
+  --lm-info-text: rgb(92, 123, 244);
+  --lm-note-background: rgb(161, 255, 205);
+  --lm-note-text: rgb(45, 153, 95);
 
   --dm-text-primary: rgb(255, 255, 255);
   --dm-text-secondary: rgb(200, 200, 200);
@@ -74,6 +92,12 @@
   --dm-code-string: rgb(63, 236, 130);
   --dm-code-error: rgb(196, 86, 95);
   --dm-code-operator: rgb(234, 57, 38);
+  --dm-warning-background: rgb(161, 124, 23);
+  --dm-warning-text: rgb(237, 237, 69);
+  --dm-info-background: rgb(47, 68, 150);
+  --dm-info-text: rgb(175, 191, 255);
+  --dm-note-background: rgb(47, 109, 76);
+  --dm-note-text: rgb(83, 248, 160);
 
   --header-height: 64px;
   --sidebar-width: 300px;
