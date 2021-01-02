@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   padding-left: 16px;
-  border-left: 1px solid var(--color-bg-3);
+  border-left: 1px solid var(--background-secondary);
   height: 32px;
 
   @media (max-width: $tablet-breakpoint) {
@@ -14,7 +14,7 @@
 .search__icon .icon {
   width: 20px;
   margin-right: 12px;
-  color: var(--color-brand);
+  color: var(--theme);
 }
 
 .search__input {
@@ -27,7 +27,7 @@
   height: 24px;
   width: calc(var(--outline-width) - 80px);
   transition: width 0.2s ease-in;
-  color: var(--color-text-1);
+  color: var(--text-primary);
   background-color: transparent;
 
   &:focus {
@@ -35,7 +35,7 @@
   }
 
   &::placeholder {
-    color: var(--color-text-2);
+    color: var(--text-secondary);
     font-weight: 300;
     opacity: 1;
   }
