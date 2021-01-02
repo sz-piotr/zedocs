@@ -7,9 +7,10 @@ interface Props {
   project: Project
   document: Document
   toc: TocItem[]
+  liveReload: boolean
 }
 
-export function Html({ project, document, toc }: Props) {
+export function Html({ project, document, toc, liveReload }: Props) {
   const title =
     document.title !== project.name
       ? `${document.title} — ${project.name}`
@@ -17,7 +18,12 @@ export function Html({ project, document, toc }: Props) {
   return (
     <html lang="en">
       <Head title={title} />
-      <Body project={project} document={document} toc={toc} />
+      <Body
+        project={project}
+        document={document}
+        toc={toc}
+        liveReload={liveReload}
+      />
     </html>
   )
 }
