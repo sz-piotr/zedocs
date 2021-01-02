@@ -9,7 +9,8 @@ html {
   line-height: $line-height-main;
   scroll-behavior: smooth;
   font-family: var(--body-font);
-  background-color: var(--color-bg-1);
+  color: var(--text-primary);
+  background-color: var(--background-primary);
 }
 
 html {

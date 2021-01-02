@@ -6,7 +6,7 @@
   height: calc(100vh - var(--header-height));
   overflow: hidden auto;
 
-  @media screen and (max-width: $tablet-breakpoint) {
+  @media (max-width: $tablet-breakpoint) {
     position: static;
     width: 100%;
     height: unset;
@@ -21,7 +21,7 @@
   width: var(--outline-width);
   padding: 32px 32px 32px 0;
 
-  @media screen and (max-width: $tablet-breakpoint) {
+  @media (max-width: $tablet-breakpoint) {
     width: 100%;
     padding: 32px 32px 0 32px;
   }
@@ -32,13 +32,13 @@
   text-transform: uppercase;
   font-size: 0.8rem;
   font-weight: 300;
-  color: var(--color-text-2);
-  border-left: 1px solid var(--color-bg-3);
+  color: var(--text-secondary);
+  border-left: 1px solid var(--background-secondary);
   padding: 8px 0 8px 16px;
   user-select: none;
   cursor: pointer;
 
-  @media screen and (max-width: $tablet-breakpoint) {
+  @media (max-width: $tablet-breakpoint) {
     padding: 0;
     border: none;
 
@@ -57,7 +57,7 @@
   padding: 0;
   list-style-type: none;
 
-  @media screen and (max-width: $tablet-breakpoint) {
+  @media (max-width: $tablet-breakpoint) {
     display: none;
     padding-top: 16px;
 
@@ -68,17 +68,17 @@
 }
 
 .outline__item {
-  border-left: 1px solid var(--color-bg-3);
+  border-left: 1px solid var(--background-secondary);
   padding: 8px 0 8px 16px;
 
-  @media screen and (max-width: $tablet-breakpoint) {
+  @media (max-width: $tablet-breakpoint) {
     padding: 4px 0 4px 16px;
   }
 }
 
 .outline__link {
   font-size: 0.9rem;
-  color: var(--color-text-1);
+  color: var(--text-primary);
   text-decoration: none;
   display: block;
   overflow: hidden;

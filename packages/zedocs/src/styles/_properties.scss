@@ -1,12 +1,45 @@
+@mixin light-mode {
+  --text-primary: var(--lm-text-primary);
+  --text-secondary: var(--lm-text-secondary);
+  --background-primary: var(--lm-background-primary);
+  --background-secondary: var(--lm-background-secondary);
+  --sidebar-background: var(--lm-sidebar-background);
+  --sidebar-hover: var(--lm-sidebar-hover);
+  --theme: var(--lm-theme);
+  --shadow: var(--lm-shadow);
+}
+
+@mixin dark-mode {
+  --text-primary: var(--dm-text-primary);
+  --text-secondary: var(--dm-text-secondary);
+  --background-primary: var(--dm-background-primary);
+  --background-secondary: var(--dm-background-secondary);
+  --sidebar-background: var(--dm-sidebar-background);
+  --sidebar-hover: var(--dm-sidebar-hover);
+  --theme: var(--dm-theme);
+  --shadow: var(--dm-shadow);
+}
+
 :root {
-  --color-text-1: rgb(34, 34, 34);
-  --color-text-2: rgb(95, 95, 95);
-  --color-bg-1: rgb(255, 255, 255);
-  --color-bg-2: rgb(250, 250, 250);
-  --color-bg-3: rgb(227, 227, 227);
-  --color-bg-4: rgb(205, 205, 205);
-  --color-brand: rgb(230, 0, 88);
-  --color-shadow: rgba(0, 0, 0, 0.2);
+  --lm-text-primary: rgb(34, 34, 34);
+  --lm-text-secondary: rgb(95, 95, 95);
+  --lm-background-primary: rgb(255, 255, 255);
+  --lm-background-secondary: rgb(227, 227, 227);
+  --lm-sidebar-background: rgb(250, 250, 250);
+  --lm-sidebar-hover: rgb(200, 200, 200);
+  --lm-theme: rgb(92, 123, 244);
+  --lm-shadow: rgba(0, 0, 0, 0.2);
+
+  --dm-text-primary: rgb(255, 255, 255);
+  --dm-text-secondary: rgb(200, 200, 200);
+  --dm-background-primary: rgb(34, 34, 34);
+  --dm-background-secondary: rgb(60, 60, 60);
+  --dm-sidebar-background: rgb(34, 34, 34);
+  --dm-sidebar-hover: rgb(5, 5, 5);
+  --dm-theme: rgb(255, 203, 48);
+  --dm-shadow: rgba(0, 0, 0, 1);
+
+  @include light-mode();
 
   --header-height: 64px;
   --sidebar-width: 300px;
@@ -20,18 +53,30 @@
   --page-left-size: calc(var(--sidebar-width) + 50vw - 720px);
   --page-right-size: calc(var(--outline-width) + 50vw - 720px);
 
-  @media screen and (max-width: $laptop-breakpoint) {
+  @media (max-width: $laptop-breakpoint) {
     --page-left-size: var(--sidebar-width);
     --page-right-size: var(--outline-width);
   }
 
-  @media screen and (max-width: $tablet-breakpoint) {
+  @media (max-width: $tablet-breakpoint) {
     --sidebar-width: 250px;
     --page-right-size: 0;
   }
 
-  @media screen and (max-width: $mobile-breakpoint) {
+  @media (max-width: $mobile-breakpoint) {
     --header-height: 48px;
     --page-left-size: 0;
   }
+
+  @media (prefers-color-scheme: dark) {
+    @include dark-mode();
+  }
+}
+
+html[data-theme='dark'] {
+  @include dark-mode();
+}
+
+html[data-theme='light'] {
+  @include light-mode();
 }
