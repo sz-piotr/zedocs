@@ -7,6 +7,15 @@
   --sidebar-hover: var(--lm-sidebar-hover);
   --theme: var(--lm-theme);
   --shadow: var(--lm-shadow);
+  --code-border: var(--lm-code-border);
+  --code-background: var(--lm-code-background);
+  --code-comment: var(--lm-code-comment);
+  --code-primary: var(--lm-code-primary);
+  --code-secondary: var(--lm-code-secondary);
+  --code-value: var(--lm-code-value);
+  --code-string: var(--lm-code-string);
+  --code-error: var(--lm-code-error);
+  --code-operator: var(--lm-code-operator);
 }
 
 @mixin dark-mode {
@@ -18,6 +27,15 @@
   --sidebar-hover: var(--dm-sidebar-hover);
   --theme: var(--dm-theme);
   --shadow: var(--dm-shadow);
+  --code-border: var(--dm-code-border);
+  --code-background: var(--dm-code-background);
+  --code-comment: var(--dm-code-comment);
+  --code-primary: var(--dm-code-primary);
+  --code-secondary: var(--dm-code-secondary);
+  --code-value: var(--dm-code-value);
+  --code-string: var(--dm-code-string);
+  --code-error: var(--dm-code-error);
+  --code-operator: var(--dm-code-operator);
 }
 
 :root {
@@ -29,6 +47,15 @@
   --lm-sidebar-hover: rgb(200, 200, 200);
   --lm-theme: rgb(92, 123, 244);
   --lm-shadow: rgba(0, 0, 0, 0.2);
+  --lm-code-border: 1px solid var(--background-secondary);
+  --lm-code-background: rgb(250, 250, 250);
+  --lm-code-comment: rgb(142, 142, 142);
+  --lm-code-primary: rgb(92, 123, 244);
+  --lm-code-secondary: rgb(255, 20, 20);
+  --lm-code-value: rgb(227, 35, 144);
+  --lm-code-string: rgb(45, 145, 84);
+  --lm-code-error: rgb(170, 13, 26);
+  --lm-code-operator: rgb(19, 112, 116);
 
   --dm-text-primary: rgb(255, 255, 255);
   --dm-text-secondary: rgb(200, 200, 200);
@@ -38,8 +65,15 @@
   --dm-sidebar-hover: rgb(5, 5, 5);
   --dm-theme: rgb(255, 203, 48);
   --dm-shadow: rgba(0, 0, 0, 1);
-
-  @include light-mode();
+  --dm-code-border: none;
+  --dm-code-background: rgb(47, 47, 47);
+  --dm-code-comment: rgb(200, 200, 200);
+  --dm-code-primary: rgb(255, 203, 48);
+  --dm-code-secondary: rgb(118, 151, 243);
+  --dm-code-value: rgb(255, 105, 187);
+  --dm-code-string: rgb(63, 236, 130);
+  --dm-code-error: rgb(196, 86, 95);
+  --dm-code-operator: rgb(234, 57, 38);
 
   --header-height: 64px;
   --sidebar-width: 300px;
@@ -52,6 +86,8 @@
 
   --page-left-size: calc(var(--sidebar-width) + 50vw - 720px);
   --page-right-size: calc(var(--outline-width) + 50vw - 720px);
+
+  @include light-mode();
 
   @media (max-width: $laptop-breakpoint) {
     --page-left-size: var(--sidebar-width);
