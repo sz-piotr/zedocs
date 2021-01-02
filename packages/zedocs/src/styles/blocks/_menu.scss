@@ -2,10 +2,10 @@
   display: none;
   z-index: $z-sidebar-menu;
   position: fixed;
-  top: 16px;
-  left: 16px;
-  width: 24px;
-  height: 16px;
+  top: 0px;
+  left: 0px;
+  width: 56px;
+  height: 48px;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 
@@ -26,18 +26,20 @@
 }
 
 .menu__top {
-  top: 0;
+  left: 16px;
+  top: 16px;
   transition: top 0.075s 0.12s ease, transform 0.075s ease;
 
   .sidebar__checkbox:checked ~ .menu & {
     transition: top 0.075s ease, transform 0.075s 0.12s ease;
-    top: 7px;
+    top: 23px;
     transform: rotate(-45deg);
   }
 }
 
 .menu__middle {
-  top: 7px;
+  left: 16px;
+  top: 23px;
   opacity: 1;
   transition: opacity 0.075s ease;
 
@@ -47,12 +49,13 @@
 }
 
 .menu__bottom {
-  top: 14px;
+  left: 16px;
+  top: 30px;
   transition: top 0.075s 0.12s ease, transform 0.075s ease;
 
   .sidebar__checkbox:checked ~ .menu & {
     transition: top 0.075s ease, transform 0.075s 0.12s ease;
-    top: 7px;
+    top: 23px;
     transform: rotate(45deg);
   }
 }

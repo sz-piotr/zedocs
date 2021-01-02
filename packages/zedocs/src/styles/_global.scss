@@ -21,3 +21,7 @@ body {
   min-height: calc(100% - var(--header-height));
   margin-top: var(--header-height);
 }
+
+:focus {
+  outline: var(--theme) solid 1px;
+}

@@ -10,7 +10,7 @@
   }
 
   @media (max-width: $mobile-breakpoint) {
-    padding: 0 16px 16px 16px;
+    padding: 0 16px 32px 16px;
     grid-auto-flow: row;
     grid-template-columns: unset;
   }

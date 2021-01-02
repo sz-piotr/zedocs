@@ -1,4 +1,5 @@
-import { MoonIcon, SearchIcon, SunIcon } from './icons'
+import { DarkMode } from './DarkMode'
+import { SearchIcon } from './icons'
 import { Project } from './types'
 
 interface Props {
@@ -13,10 +14,7 @@ export function Header({ project }: Props) {
           {project.name}
         </a>
         <div className="header__right">
-          <button className="dark-mode">
-            <MoonIcon />
-            <SunIcon />
-          </button>
+          <DarkMode />
           <div className="search">
             <label className="search__icon" htmlFor="search">
               <SearchIcon />

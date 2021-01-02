@@ -9,30 +9,34 @@ function announce() {
 }
 
 function darkModeSupport() {
-  const button: HTMLButtonElement | null = document.querySelector('.dark-mode')
-  if (button) {
+  let darkModeEnabled = false
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)')
+  const saved = localStorage.getItem('zedocs-theme')
+  if (prefersDark) {
+    darkModeEnabled = true
+  }
+  if (saved === 'light') {
+    darkModeEnabled = false
+    document.documentElement.dataset.theme = 'light'
+  }
+  if (saved === 'dark') {
+    darkModeEnabled = true
+    document.documentElement.dataset.theme = 'dark'
+  }
+
+  function toggleDarkMode() {
+    darkModeEnabled = !darkModeEnabled
+    const theme = darkModeEnabled ? 'dark' : 'light'
+    document.documentElement.dataset.theme = theme
+    localStorage.setItem('zedocs-theme', theme)
+  }
+
+  const buttons: NodeListOf<HTMLButtonElement> = document.querySelectorAll(
+    '.dark-mode'
+  )
+  for (let i = 0; i < buttons.length; i++) {
+    const button = buttons[i]
     button.style.display = 'block'
-
-    let darkModeEnabled = false
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)')
-    const saved = localStorage.getItem('zedocs-theme')
-    if (prefersDark) {
-      darkModeEnabled = true
-    }
-    if (saved === 'light') {
-      darkModeEnabled = false
-      document.documentElement.dataset.theme = 'light'
-    }
-    if (saved === 'dark') {
-      darkModeEnabled = true
-      document.documentElement.dataset.theme = 'dark'
-    }
-
-    button.addEventListener('click', () => {
-      darkModeEnabled = !darkModeEnabled
-      const theme = darkModeEnabled ? 'dark' : 'light'
-      document.documentElement.dataset.theme = theme
-      localStorage.setItem('zedocs-theme', theme)
-    })
+    button.addEventListener('click', toggleDarkMode)
   }
 }
