@@ -14,7 +14,7 @@ interface MarkdownParseResult {
 export function parseMarkdown(content: string): MarkdownParseResult {
   let frontMatter: FrontMatter = {}
   let warning: string | undefined
-  const html = new MarkdownIt({ highlight })
+  const html = new MarkdownIt({ highlight, html: true })
     .use(MarkdownItAnchor)
     .use(MarkdownItContainer, 'info')
     .use(MarkdownItContainer, 'note')
