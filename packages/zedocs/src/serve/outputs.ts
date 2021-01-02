@@ -6,7 +6,6 @@ interface ChangeListener {
 }
 
 interface OutputItem {
-  path: string
   type: string
   content: string | Buffer
 }
@@ -16,7 +15,7 @@ export class Outputs {
   private listeners: ChangeListener[] = []
 
   update(outputs: Output[]) {
-    const oldItems = [...this.items.values()]
+    const oldItems = new Map(this.items)
     this.items.clear()
 
     for (const artifact of outputs) {
@@ -26,15 +25,20 @@ export class Outputs {
         paths.push(dirname(artifact.targetPath))
       }
       for (const path of paths) {
-        this.items.set(path, { path, type, content: artifact.content })
+        this.items.set(path, { type, content: artifact.content })
       }
     }
 
-    this.calculateChanges(oldItems, [...this.items.values()])
+    this.calculateChanges(oldItems, this.items)
   }
 
-  private calculateChanges(oldItems: OutputItem[], newItems: OutputItem[]) {
-    const changes = newItems.map((item) => item.path)
+  private calculateChanges(
+    oldItems: Map<string, OutputItem>,
+    newItems: Map<string, OutputItem>
+  ) {
+    const changes = [...oldItems.keys()].filter(
+      (key) => !contentEquals(oldItems.get(key), newItems.get(key))
+    )
     this.notifyChanges(changes)
   }
 
@@ -51,5 +55,19 @@ export class Outputs {
 
   get(path: string) {
     return this.items.get(path)
+  }
+}
+
+function contentEquals(a: OutputItem | undefined, b: OutputItem | undefined) {
+  if (!a || !b) {
+    return false
+  }
+  if (typeof a.content === 'string') {
+    return a.content === b.content
+  } else {
+    if (typeof b.content === 'string') {
+      return false
+    }
+    return a.content.equals(b.content)
   }
 }
