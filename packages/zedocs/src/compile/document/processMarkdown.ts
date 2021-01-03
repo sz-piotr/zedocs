@@ -5,6 +5,7 @@ import { OutlineItem } from '../Artifacts'
 import { addHeadingLinks } from './addHeadingLinks'
 import { extractLinks } from './extractLinks'
 import { getOutline } from './getOutline'
+import { makeTablesResponsive } from './makeTablesResponsive'
 import { parseMarkdown } from './parseMarkdown'
 import { updateExternalLinks } from './updateExternalLinks'
 
@@ -33,6 +34,7 @@ export function processMarkdown(
   const outline = getOutline($)
   addHeadingLinks($)
   updateExternalLinks($)
+  makeTablesResponsive($)
 
   return {
     slug,

@@ -7,6 +7,7 @@ code {
   border: var(--code-border);
   font-size: 1em;
   hyphens: none;
+  white-space: pre;
 }
 
 pre code {
@@ -15,7 +16,6 @@ pre code {
   padding: 16px;
   overflow-x: auto;
   text-align: left;
-  white-space: pre;
   word-spacing: normal;
   word-break: normal;
   word-wrap: normal;
@@ -36,6 +36,11 @@ pre[data-lang] {
     top: 12px;
     right: 16px;
   }
+}
+
+code.language-md .token,
+code.language-markdown .token {
+  color: var(--text-primary) !important;
 }
 
 .token.comment,
