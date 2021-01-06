@@ -71,6 +71,9 @@
 
 .article img {
   max-width: 100%;
+  height: auto;
+  display: inline-block;
+  background-color: var(--background-secondary);
 }
 
 .article .warning,

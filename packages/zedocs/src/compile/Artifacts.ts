@@ -19,6 +19,12 @@ export interface Output {
   sourcePath: string
   targetPath: string
   content: Buffer | string
+  metadata: OutputMetadata
+}
+
+export interface OutputMetadata {
+  width?: number,
+  height?: number
 }
 
 export class Artifacts {
