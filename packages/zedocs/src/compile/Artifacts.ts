@@ -23,7 +23,7 @@ export interface Output {
 }
 
 export interface OutputMetadata {
-  width?: number,
+  width?: number
   height?: number
 }
 

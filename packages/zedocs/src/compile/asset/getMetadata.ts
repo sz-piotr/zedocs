@@ -6,7 +6,7 @@ export function getMetadata(data: Buffer): OutputMetadata {
     const dimensions = imageSize(data)
     return {
       width: dimensions.width,
-      height: dimensions.height
+      height: dimensions.height,
     }
   } catch {
     return {}

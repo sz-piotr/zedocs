@@ -19,7 +19,7 @@ export function buildSecondPass(artifacts: Artifacts, liveReload: boolean) {
       sourcePath: artifact.sourcePath,
       targetPath: artifact.targetPath,
       content: render(project, document, toc, liveReload),
-      metadata: {}
+      metadata: {},
     }
   })
   artifacts.outputs.push(...outputs)
