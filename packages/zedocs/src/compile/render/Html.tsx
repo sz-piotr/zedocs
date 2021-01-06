@@ -11,13 +11,13 @@ interface Props {
 }
 
 export function Html({ project, document, toc, liveReload }: Props) {
-  const title =
-    document.title !== project.name
-      ? `${document.title} — ${project.name}`
-      : document.title
   return (
     <html lang="en">
-      <Head title={title} />
+      <Head
+        title={document.title}
+        site={project.name}
+        description={document.description}
+      />
       <Body
         project={project}
         document={document}

@@ -5,11 +5,13 @@ import { zodErrorToString } from '../../errors'
 export interface FrontMatter {
   name?: string
   slug?: string
+  description?: string
 }
 
 const frontMatterSchema = z.object({
   name: z.string().optional(),
   slug: z.string().optional(),
+  description: z.string().optional(),
 })
 
 export function parseFrontMatter(

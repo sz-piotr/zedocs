@@ -33,6 +33,7 @@ export function processDocument(
       sourcePath: item.path,
       targetPath: path.join(processed.slug, 'index.html'),
       name: processed.name,
+      description: processed.description,
       slug: processed.slug,
       content: processed.content,
       outline: processed.outline,

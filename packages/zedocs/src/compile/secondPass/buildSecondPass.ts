@@ -13,6 +13,7 @@ export function buildSecondPass(artifacts: Artifacts, liveReload: boolean) {
       title: artifact.name,
       link: artifact.slug,
       outline: artifact.outline,
+      description: artifact.description,
       html: prepareHtml(artifact, artifacts),
     }
     return {

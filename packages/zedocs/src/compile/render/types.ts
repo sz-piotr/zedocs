@@ -6,6 +6,7 @@ export interface Project {
 
 export interface Document {
   title: string
+  description?: string
   link: string
   html: string
   outline: OutlineItem[]
