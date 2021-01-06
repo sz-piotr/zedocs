@@ -1,5 +1,6 @@
 .article {
   padding: 32px 64px;
+  line-height: 1.7;
 
   @media (max-width: $tablet-breakpoint) {
     padding: 32px;
@@ -16,6 +17,7 @@
 .article h4,
 .article h5,
 .article h6 {
+  line-height: 1.15;
   margin-top: calc(var(--header-height) * -1);
   padding-top: var(--header-height);
 }
@@ -62,7 +64,6 @@
 
 .article p {
   margin: 0 0 16px 0;
-  line-height: 1.7;
 }
 
 .article pre {
@@ -74,6 +75,45 @@
   height: auto;
   display: inline-block;
   background-color: var(--background-secondary);
+}
+
+.article blockquote {
+  margin: 0;
+  padding-left: 20px;
+  border-left: 4px solid var(--background-secondary);
+}
+
+.article a {
+  color: var(--theme);
+}
+
+.article .table {
+  max-width: 100%;
+  overflow-x: auto;
+  margin-bottom: 16px;
+}
+
+.article table {
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: 4px 8px;
+    border-right: 1px solid var(--text-secondary);
+    border-bottom: 1px solid var(--text-secondary);
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  th {
+    border-bottom: 2px solid var(--text-primary);
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
 }
 
 .article .warning,
