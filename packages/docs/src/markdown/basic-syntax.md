@@ -180,11 +180,12 @@ to those files. The linked files are also rendered and included in the output.
 :::
 
 **Example:**
+
 ```md
 [ZeDocs](https://zedocs.org)
 
 Links can also be inline [yay](https://zedocs.org) and can contain markdown
-and titles [hover _over_ me](https://zedocs.org "Optional title").
+and titles [hover _over_ me](https://zedocs.org 'Optional title').
 
 You can also link to other markdown files: [secret page](./secret.md).
 ```
@@ -194,9 +195,8 @@ You can also link to other markdown files: [secret page](./secret.md).
 [ZeDocs](https://zedocs.org)
 
 Links can also be inline [yay](https://zedocs.org) and can contain markdown
-and titles [hover _over_ me](https://zedocs.org "Optional title").
+and titles [hover _over_ me](https://zedocs.org 'Optional title').
 
 You can also link to other markdown files: [secret page](./secret.md).
 
 ## Images
-
