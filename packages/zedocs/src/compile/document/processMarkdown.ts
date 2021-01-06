@@ -6,6 +6,7 @@ import { addHeadingLinks } from './addHeadingLinks'
 import { extractLinks } from './extractLinks'
 import { getOutline } from './getOutline'
 import { parseMarkdown } from './parseMarkdown'
+import { updateExternalLinks } from './updateExternalLinks'
 
 export interface ProcessedMarkdown {
   slug: string
@@ -31,6 +32,7 @@ export function processMarkdown(
   const links = extractLinks($, directory)
   const outline = getOutline($)
   addHeadingLinks($)
+  updateExternalLinks($)
 
   return {
     slug,
