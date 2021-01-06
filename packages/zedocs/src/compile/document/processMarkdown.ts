@@ -4,6 +4,7 @@ import path from 'path'
 import { OutlineItem } from '../Artifacts'
 import { addHeadingLinks } from './addHeadingLinks'
 import { extractLinks } from './extractLinks'
+import { getDescription } from './getDescription'
 import { getOutline } from './getOutline'
 import { makeTablesResponsive } from './makeTablesResponsive'
 import { parseMarkdown } from './parseMarkdown'
@@ -12,6 +13,7 @@ import { updateExternalLinks } from './updateExternalLinks'
 export interface ProcessedMarkdown {
   slug: string
   name: string
+  description?: string
   content: string
   links: string[]
   warning?: string
@@ -30,6 +32,8 @@ export function processMarkdown(
   const name =
     frontMatter.name ??
     ($('h1').eq(0).text() || sentenceCase(path.parse(slug).name))
+  const description =
+    frontMatter.description ?? (getDescription($) || undefined)
   const links = extractLinks($, directory)
   const outline = getOutline($)
   addHeadingLinks($)
@@ -39,6 +43,7 @@ export function processMarkdown(
   return {
     slug,
     name,
+    description,
     content: $('body').html() ?? '',
     links,
     warning,

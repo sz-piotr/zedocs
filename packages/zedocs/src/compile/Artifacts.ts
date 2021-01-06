@@ -5,6 +5,7 @@ export interface Document {
   targetPath: string
   slug: string
   name: string
+  description?: string
   content: string
   outline: OutlineItem[]
 }
