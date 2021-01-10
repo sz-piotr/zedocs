@@ -38,9 +38,9 @@ pre[data-lang] {
   }
 }
 
-code.language-md .token,
-code.language-markdown .token {
-  color: var(--text-primary) !important;
+code.language-md .token.title,
+code.language-markdown .token.title {
+  color: var(--text-primary);
 }
 
 .token.comment,
