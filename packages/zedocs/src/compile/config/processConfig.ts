@@ -21,6 +21,7 @@ export function processConfig(
     })
   } else {
     artifacts.config = result.data
+    addLogos(item.path, artifacts.config, queue)
     addDocuments(
       item.path,
       artifacts.config.directory,
@@ -32,7 +33,26 @@ export function processConfig(
   return { errors, warnings }
 }
 
-export function addDocuments(
+function addLogos(configPath: string, config: Config, queue: BuildQueue) {
+  if (config.logo) {
+    config.logo = path.resolve(config.directory, config.logo)
+    queue.add({
+      path: config.logo,
+      type: 'ASSET',
+      referencedBy: configPath,
+    })
+  }
+  if (config.logoDark) {
+    config.logoDark = path.resolve(config.directory, config.logoDark)
+    queue.add({
+      path: config.logoDark,
+      type: 'ASSET',
+      referencedBy: configPath,
+    })
+  }
+}
+
+function addDocuments(
   configPath: string,
   directory: string,
   contents: Config['contents'],

@@ -1,6 +1,8 @@
 export interface Config {
   name: string
   contents: (Section | string)[]
+  logo?: string
+  logoDark?: string
   directory: string
 }
 

@@ -29,7 +29,7 @@
   }
 }
 
-.header__title {
+.header__brand {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -46,6 +46,19 @@
     padding: 0;
     border: none;
   }
+}
+
+.header__logo {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.header__logo--light {
+  @include only-light;
+}
+
+.header__logo--dark {
+  @include only-dark;
 }
 
 .header__right {

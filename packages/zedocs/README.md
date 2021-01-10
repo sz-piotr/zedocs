@@ -1,3 +1,7 @@
+<center>
+<img width="300" src="https://raw.githubusercontent.com/sz-piotr/zedocs/master/packages/zedocs/logo.svg" alt="ZeDocs Logo">
+</center>
+
 # ZeDocs
 
 [![CI](https://img.shields.io/github/workflow/status/sz-piotr/zedocs/CI/master)](https://github.com/sz-piotr/zedocs/actions)

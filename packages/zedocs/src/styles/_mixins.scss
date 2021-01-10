@@ -1,0 +1,31 @@
+@mixin only-light {
+  display: block;
+
+  html[data-theme='light'] & {
+    display: block;
+  }
+
+  html[data-theme='dark'] & {
+    display: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    display: none;
+  }
+}
+
+@mixin only-dark {
+  display: none;
+
+  html[data-theme='light'] & {
+    display: none;
+  }
+
+  html[data-theme='dark'] & {
+    display: block;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    display: block;
+  }
+}

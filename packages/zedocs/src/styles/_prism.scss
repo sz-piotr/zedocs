@@ -28,7 +28,7 @@ pre[data-lang] {
   &::after {
     content: attr(data-lang);
     font-family: var(--body-font);
-    font-weight: 300;
+    font-weight: 400;
     color: var(--text-secondary);
     font-size: 0.8em;
     text-transform: uppercase;

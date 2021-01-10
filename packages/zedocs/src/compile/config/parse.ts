@@ -12,6 +12,8 @@ const sectionSchema: z.ZodSchema<Section> = z
 const schema = z
   .object({
     name: z.string(),
+    logo: z.string().optional(),
+    logoDark: z.string().optional(),
     contents: z.array(z.union([z.string(), sectionSchema])),
   })
   .strict()
