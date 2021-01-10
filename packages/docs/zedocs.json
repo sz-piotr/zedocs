@@ -1,5 +1,7 @@
 {
   "name": "ZeDocs",
+  "logo": "src/assets/logo-light.svg",
+  "logoDark": "src/assets/logo-dark.svg",
   "contents": [
     "src/introduction.md",
     {

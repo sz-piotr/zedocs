@@ -7,11 +7,30 @@ interface Props {
 }
 
 export function Header({ project }: Props) {
+  const mainLogo = project.logo ?? project.logoDark
   return (
     <header className="header">
       <div className="header__content">
-        <a className="header__title" href="/">
-          {project.name}
+        <a className="header__brand" href="/">
+          {mainLogo && (
+            <img
+              className={
+                project.logoDark
+                  ? 'header__logo header__logo--light'
+                  : 'header__logo'
+              }
+              src={mainLogo}
+              alt={`${project.name} logo`}
+            />
+          )}
+          {project.logoDark && (
+            <img
+              className="header__logo header__logo--dark"
+              src={project.logoDark}
+              alt={`${project.name} logo`}
+            />
+          )}
+          {!mainLogo && <span className="header__title">{project.name}</span>}
         </a>
         <div className="header__right">
           <DarkMode />

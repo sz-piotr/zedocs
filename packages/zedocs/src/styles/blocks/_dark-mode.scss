@@ -8,34 +8,10 @@
   cursor: pointer;
 
   .icon:nth-child(1) {
-    display: block;
-
-    html[data-theme='light'] & {
-      display: block;
-    }
-
-    html[data-theme='dark'] & {
-      display: none;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      display: none;
-    }
+    @include only-light;
   }
 
   .icon:nth-child(2) {
-    display: none;
-
-    html[data-theme='light'] & {
-      display: none;
-    }
-
-    html[data-theme='dark'] & {
-      display: block;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      display: block;
-    }
+    @include only-dark;
   }
 }
