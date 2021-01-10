@@ -109,8 +109,8 @@
   --code-font: 'Fira Code', 'JetBrains Mono', Consolas, Menlo, Monaco,
     'Courier New', Courier, monospace;
 
-  --page-left-size: calc(var(--sidebar-width) + 50vw - 720px);
-  --page-right-size: calc(var(--outline-width) + 50vw - 720px);
+  --page-left-size: calc(var(--sidebar-width) + 50% - 720px);
+  --page-right-size: calc(var(--outline-width) + 50% - 720px);
 
   @include light-mode();
 
