@@ -31,7 +31,7 @@ export function processDocument(
     }
     artifacts.documents.push({
       sourcePath: item.path,
-      targetPath: path.join(processed.slug, 'index.html'),
+      targetPath: path.posix.join(processed.slug, 'index.html'),
       name: processed.name,
       description: processed.description,
       slug: processed.slug,
