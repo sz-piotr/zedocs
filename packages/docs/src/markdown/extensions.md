@@ -1,6 +1,6 @@
 # Extensions
 
-This page talks about the extensions added to markdown in ZeDocs.
+This page talks about the extensions added to markdown in Zedocs.
 
 This is a warning.
 

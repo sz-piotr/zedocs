@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 export const version = require('../../package.json').version
 
-export const usage = `ZeDocs (version ${version})
+export const usage = `Zedocs (version ${version})
 
 usage:
 

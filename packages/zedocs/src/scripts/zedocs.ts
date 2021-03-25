@@ -5,7 +5,7 @@ function main() {
 }
 
 function announce() {
-  console.log('Built with ZeDocs (https://zedocs.org)')
+  console.log('Powered by Zedocs (https://zedocs.org)')
 }
 
 function darkModeSupport() {
