@@ -10,7 +10,7 @@ const LIVE_RELOAD_PORT = 35729
 const HANDSHAKE = {
   command: 'hello',
   protocols: ['http://livereload.com/protocols/official-7'],
-  serverName: 'ZeDocs LiveReload 2',
+  serverName: 'Zedocs LiveReload 2',
 }
 
 export function runLiveReload(outputs: Outputs) {

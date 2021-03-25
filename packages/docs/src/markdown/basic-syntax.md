@@ -1,6 +1,6 @@
 # Basic Syntax
 
-With ZeDocs you will be using Markdown to write your documentation. Markdown is
+With Zedocs you will be using Markdown to write your documentation. Markdown is
 a lightweight markup language with plain-text-formatting syntax.
 
 This page will go over the basics of how to author Markdown files as well as
@@ -68,7 +68,7 @@ yourself to using `#`, `##` and `###`. Deeper nesting makes documents hard to
 read and it is better to just split the content into multiple files.
 
 ::: info
-The first `#` heading is used to determine the page title in ZeDocs.
+The first `#` heading is used to determine the page title in Zedocs.
 :::
 
 _Example:_
@@ -175,14 +175,14 @@ The syntax for links is very straightforward. Use `[]` to specify the link text
 and `()` to specify the links url. You can also and an optional title with `""`.
 
 :::info
-In ZeDocs relative links to other markdown files are converted to absolute links
+In Zedocs relative links to other markdown files are converted to absolute links
 to those files. The linked files are also rendered and included in the output.
 :::
 
 **Example:**
 
 ```md
-[ZeDocs](https://zedocs.org)
+[Zedocs](https://zedocs.org)
 
 Links can also be inline [yay](https://zedocs.org) and can contain markdown
 and titles [hover _over_ me](https://zedocs.org 'Optional title').
@@ -192,7 +192,7 @@ You can also link to other markdown files: [secret page](./secret.md).
 
 **Will be rendered as:**
 
-[ZeDocs](https://zedocs.org)
+[Zedocs](https://zedocs.org)
 
 Links can also be inline [yay](https://zedocs.org) and can contain markdown
 and titles [hover _over_ me](https://zedocs.org 'Optional title').
