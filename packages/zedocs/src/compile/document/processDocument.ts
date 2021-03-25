@@ -37,6 +37,7 @@ export function processDocument(
       slug: processed.slug,
       content: processed.content,
       outline: processed.outline,
+      searchable: processed.searchable,
     })
     for (const link of processed.links) {
       queue.add({

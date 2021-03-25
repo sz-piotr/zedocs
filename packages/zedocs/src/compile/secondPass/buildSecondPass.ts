@@ -1,5 +1,6 @@
 import { Artifacts, Output } from '../Artifacts'
 import { Document, Project, render } from '../render'
+import { getSearchJson } from './getSearchJson'
 import { getTableOfContents } from './getTableOfContents'
 import { prepareHtml } from './prepareHtml'
 
@@ -26,6 +27,7 @@ export function buildSecondPass(artifacts: Artifacts, liveReload: boolean) {
     }
   })
   artifacts.outputs.push(...outputs)
+  artifacts.outputs.push(getSearchJson(artifacts.documents))
 }
 
 function getTargetPath(sourcePath: string | undefined, outputs: Output[]) {

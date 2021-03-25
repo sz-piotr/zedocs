@@ -1,4 +1,5 @@
 import { Config } from './config'
+import { SearchableContent } from './document/getSearchableContent'
 
 export interface Document {
   sourcePath: string
@@ -8,6 +9,7 @@ export interface Document {
   description?: string
   content: string
   outline: OutlineItem[]
+  searchable: SearchableContent
 }
 
 export interface OutlineItem {

@@ -6,6 +6,7 @@ import { addHeadingLinks } from './addHeadingLinks'
 import { extractLinks } from './extractLinks'
 import { getDescription } from './getDescription'
 import { getOutline } from './getOutline'
+import { getSearchableContent, SearchableContent } from './getSearchableContent'
 import { makeTablesResponsive } from './makeTablesResponsive'
 import { parseMarkdown } from './parseMarkdown'
 import { updateExternalLinks } from './updateExternalLinks'
@@ -18,6 +19,7 @@ export interface ProcessedMarkdown {
   links: string[]
   warning?: string
   outline: OutlineItem[]
+  searchable: SearchableContent
 }
 
 export function processMarkdown(
@@ -36,6 +38,7 @@ export function processMarkdown(
     frontMatter.description ?? (getDescription($) || undefined)
   const links = extractLinks($, directory)
   const outline = getOutline($)
+  const searchable = getSearchableContent($, slug)
   addHeadingLinks($)
   updateExternalLinks($)
   makeTablesResponsive($)
@@ -48,6 +51,7 @@ export function processMarkdown(
     links,
     warning,
     outline,
+    searchable,
   }
 }
 

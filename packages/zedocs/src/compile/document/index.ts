@@ -1,2 +1,3 @@
 export * from './processDocument'
-export * from './getOutline'
+export { OutlineItem } from './getOutline'
+export { SearchableContent } from './getSearchableContent'
