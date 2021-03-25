@@ -45,6 +45,7 @@ export function Header({ project }: Props) {
               name="search"
               id="search"
             />
+            <div className="results" />
           </div>
         </div>
       </div>

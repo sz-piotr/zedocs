@@ -1,0 +1,15 @@
+.results {
+  display: none;
+}
+
+.results--visible {
+  display: block;
+  position: fixed;
+  right: calc(50% - 720px);
+  top: calc(var(--header-height) + 16px);
+  width: 380px;
+  background-color: var(--background-primary);
+  padding: 16px;
+  border-radius: 4px;
+  box-shadow: 0 0 4px 0 var(--shadow);
+}
