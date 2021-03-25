@@ -1,5 +1,6 @@
 import { TocItem } from '../../secondPass'
 import { DarkMode } from '../DarkMode'
+import { PoweredBy } from './PoweredBy'
 import { SidebarItems } from './SidebarItems'
 
 interface Props {
@@ -23,6 +24,7 @@ export function Sidebar({ toc, activeItem }: Props) {
         <nav className="sidebar__content">
           <SidebarItems toc={toc} activeItem={activeItem} />
         </nav>
+        <PoweredBy />
       </div>
       <label htmlFor="sidebar" className="sidebar__shadow" />
     </>

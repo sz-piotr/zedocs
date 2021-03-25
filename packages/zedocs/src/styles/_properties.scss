@@ -4,6 +4,7 @@
   --background-primary: var(--lm-background-primary);
   --background-secondary: var(--lm-background-secondary);
   --sidebar-background: var(--lm-sidebar-background);
+  --sidebar-powered: var(--lm-sidebar-powered);
   --sidebar-hover: var(--lm-sidebar-hover);
   --theme: var(--lm-theme);
   --shadow: var(--lm-shadow);
@@ -30,6 +31,7 @@
   --background-primary: var(--dm-background-primary);
   --background-secondary: var(--dm-background-secondary);
   --sidebar-background: var(--dm-sidebar-background);
+  --sidebar-powered: var(--dm-sidebar-powered);
   --sidebar-hover: var(--dm-sidebar-hover);
   --theme: var(--dm-theme);
   --shadow: var(--dm-shadow);
@@ -56,6 +58,7 @@
   --lm-background-primary: rgb(255, 255, 255);
   --lm-background-secondary: rgb(227, 227, 227);
   --lm-sidebar-background: rgb(250, 250, 250);
+  --lm-sidebar-powered: var(--background-secondary);
   --lm-sidebar-hover: rgb(200, 200, 200);
   --lm-theme: rgb(63, 101, 249);
   --lm-shadow: rgba(0, 0, 0, 0.2);
@@ -80,6 +83,7 @@
   --dm-background-primary: rgb(34, 34, 34);
   --dm-background-secondary: rgb(60, 60, 60);
   --dm-sidebar-background: rgb(34, 34, 34);
+  --dm-sidebar-powered: var(--dm-code-background);
   --dm-sidebar-hover: rgb(5, 5, 5);
   --dm-theme: rgb(255, 203, 48);
   --dm-shadow: rgba(0, 0, 0, 1);
@@ -104,8 +108,9 @@
   --outline-width: 250px;
 
   --body-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-  --heading-font: charter, Georgia, Cambria, 'Times New Roman', Times, serif;
+    Oxygen-Sans, 'DejaVu Sans', Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  --heading-font: charter, Georgia, Cambria, 'DejaVu Serif', 'Times New Roman',
+    Times, serif;
   --code-font: 'Fira Code', 'JetBrains Mono', Consolas, Menlo, Monaco,
     'Courier New', Courier, monospace;
 
