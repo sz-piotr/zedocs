@@ -8,6 +8,7 @@ import { processItem } from './processItem'
 
 const ZEDOCS_JS_PATH = resolve(__dirname, '../../scripts/zedocs.js')
 const ZEDOCS_CSS_PATH = resolve(__dirname, '../../styles/zedocs.css')
+const POWERED_BY_PATH = resolve(__dirname, '../../../powered-by.svg')
 
 export function buildFirstPass(configPath: string | undefined) {
   const startTimeMs = Date.now()
@@ -16,6 +17,7 @@ export function buildFirstPass(configPath: string | undefined) {
   queue.add({ type: 'CONFIG', path: resolve(configPath ?? 'zedocs.json') })
   queue.add({ type: 'ASSET', path: ZEDOCS_JS_PATH })
   queue.add({ type: 'ASSET', path: ZEDOCS_CSS_PATH })
+  queue.add({ type: 'ASSET', path: POWERED_BY_PATH })
 
   const warnings: BuildWarning[] = []
   const errors: BuildError[] = []
